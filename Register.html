@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudentHub | Register</title>
+</head>
+<body style="background-color:powderblue;">
+
+  <main id="main">
+    <section aria-labelledby="register-heading">
+      <h1 id="register-heading">Create your StudentHub account</h1>
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Account details</legend>
+          <p>
+            <label for="register-name">Full name</label><br />
+            <input type="text" id="register-name" name="name" required />
+          </p>
+          <p>
+            <label for="register-email">Email address</label><br />
+            <input type="email" id="register-email" name="email" required />
+          </p>
+          <p>
+            <label for="register-password">Password</label><br />
+            <input type="password" id="register-password" name="password" required />
+          </p>
+          <p>
+            <label for="register-role">Role</label><br />
+            <select id="register-role" name="role">
+              <option value="student">Student</option>
+              <option value="staff">Staff</option>
+            </select>
+          </p>
+        </fieldset>
+        <button type="submit">Register</button>
+      </form>
+    </section>
+  </main>
+      <nav aria-label="Primary navigation">
+      <ul>
+        <li><a href="Home.html">Back To Home</a></li>
+    </nav>
+  <footer>
+    <p>&copy; 2026 StudentHub</p>
+  </footer>
+</body>
+</html>
