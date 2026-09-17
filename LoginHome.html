@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | Student Portal</title>
+    <link rel="stylesheet" href="CSS Files/LoginHome.css">
+</head>
+<body>
+    <main class="login-page">
+        <section class="login-intro" aria-label="Student Portal introduction">
+            <a class="brand" href="HomePage.html" aria-label="Student Portal home">
+                <span class="brand-mark">SP</span>
+                <span>Student Portal</span>
+            </a>
+
+            <div class="intro-copy">
+                <p class="eyebrow">Your academic workspace</p>
+                <h1>Everything you need to stay on track.</h1>
+                <p class="intro-text">Sign in to see your courses, assignments, attendance and results in one calm, focused space.</p>
+            </div>
+
+            <div class="intro-footer">
+                <span class="footer-line"></span>
+                <span>Learn. Grow. Achieve.</span>
+            </div>
+        </section>
+
+        <section class="login-panel" aria-labelledby="login-title">
+            <div class="login-box">
+                <div class="mobile-brand">Student Portal</div>
+                <p class="eyebrow">Welcome back</p>
+                <h2 id="login-title">Sign in to your account</h2>
+                <p class="login-subtitle">Use your student email and password to continue.</p>
+
+                <form action="HomePage.html" method="get">
+                    <div class="field-group">
+                        <label for="email">Student email</label>
+                        <input type="email" id="email" name="email" placeholder="you@university.edu" autocomplete="email" required>
+                    </div>
+
+                    <div class="field-group">
+                        <div class="label-row">
+                            <label for="password">Password</label>
+                            <a href="#" class="text-link">Forgot password?</a>
+                        </div>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required>
+                    </div>
+
+                    <label class="remember-row">
+                        <input type="checkbox" name="remember">
+                        <span>Keep me signed in</span>
+                    </label>
+
+                    <button type="submit" class="login-button">Sign in <span aria-hidden="true">&rarr;</span></button>
+                </form>
+
+                <p class="signup-prompt">New to the portal? <a href="Register.html" class="text-link">Create an account</a></p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

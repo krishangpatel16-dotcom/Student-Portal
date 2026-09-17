@@ -1,0 +1,113 @@
+:root {
+    color-scheme: dark;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: block;
+    padding: 0;
+    background: radial-gradient(circle at top right, #1e3a8a, #0f172a);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f8fafc;
+}
+
+.page-content {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container {
+    background: rgba(15, 23, 42, 0.95);
+    width: 100%;
+    max-width: 600px;
+    padding: 40px 50px ;
+    border-radius: 20px;
+    border: 1px solid rgba(148, 163, 184, 0.08);
+    box-shadow: 0 20px 40px rgba(2, 6, 23, 0.6);
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    background: linear-gradient(90deg, #60a5fa, #34d399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    margin-left: -20px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: #e2e8f0;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 14px 20px;
+    background: rgba(248, 250, 252, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    font-size: 14px;
+    color: #f8fafc;
+    outline: none;
+    transition: background-color 0.2s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+textarea {
+    border-radius: 20px;
+    resize: none;
+}
+
+::placeholder {
+    color: #94a3b8;
+}
+
+input:focus,
+textarea:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+}
+
+.submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #2563eb, #3b82f6);
+    color: #ffffff;
+    border: none;
+    padding: 12px 35px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 999px;
+    cursor: pointer;
+    margin: 30px auto 0 auto;
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.25);
+}
+
+.submit-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.3);
+}
+
+.submit-btn span {
+    font-size: 18px;
+}

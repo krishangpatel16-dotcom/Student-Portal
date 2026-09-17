@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Courses | Student Portal</title>
+	<link rel="stylesheet" href="CSS Files/HomePage.css">
+	<link rel="stylesheet" href="CSS Files/Courses.css">
+</head>
+<body>
+	<div class="portal-layout">
+		<aside class="sidebar" aria-label="Sidebar navigation">
+			<div class="brand-wrap">
+				<h1 class="brand-title">Student<br>Portal</h1>
+			</div>
+
+			<nav class="sidebar-nav" aria-label="Main navigation">
+				<a href="HomePage.html" class="nav-item">
+					<span class="nav-icon">⌂</span>
+					<span>Home</span>
+				</a>
+				<a href="Profile.html" class="nav-item">
+					<span class="nav-icon">◉</span>
+					<span>Profile</span>
+				</a>
+				<a href="Courses.html" class="nav-item active" aria-current="page">
+					<span class="nav-icon">▣</span>
+					<span>Courses</span>
+				</a>
+				<a href="Assignments.html" class="nav-item">
+					<span class="nav-icon">▤</span>
+					<span>Assignments</span>
+				</a>
+				<a href="Results.html" class="nav-item">
+					<span class="nav-icon">▨</span>
+					<span>Results</span>
+				</a>
+				<a href="Feedback.html" class="nav-item">
+					<span class="nav-icon">▣</span>
+					<span>Feedback</span>
+				</a>
+				<a href="AboutUs.html" class="nav-item">
+					<span class="nav-icon">?</span>
+					<span>About Us</span>
+				</a>
+				<a href="LoginPage.html" class="nav-item logout-item">
+					<span class="nav-icon">↪</span>
+					<span>Log out</span>
+				</a>
+			</nav>
+		</aside>
+
+		<main class="main-panel courses-panel">
+			<header class="courses-header">
+				<div>
+					<p class="eyebrow">Academic dashboard</p>
+					<h2>Welcome back, Krishang!</h2>
+					<p class="header-copy">Explore your enrolled courses and stay on top of your weekly classes.</p>
+				</div>
+				<div class="semester-badge">
+					<span>Current semester</span>
+					<strong>Semester 3</strong>
+				</div>
+			</header>
+
+			<section class="course-hero" aria-label="Course introduction">
+				<div>
+					<span class="hero-kicker">Keep learning</span>
+					<h1>Build your next<br>great skill.</h1>
+					<p>Find your course materials, class schedule and learning progress in one focused space.</p>
+					<a href="#enrolled-courses" class="hero-button">View enrolled courses <span>→</span></a>
+				</div>
+				<div class="hero-orbit" aria-hidden="true">
+					<span class="orbit-dot dot-one">✦</span>
+					<span class="orbit-dot dot-two">◆</span>
+					<span class="orbit-dot dot-three">+</span>
+					<div class="orbit-core">▣</div>
+				</div>
+			</section>
+
+			<section id="enrolled-courses" class="courses-section" aria-labelledby="enrolled-title">
+				<div class="section-heading">
+					<div>
+						<p class="eyebrow">Your learning path</p>
+						<h2 id="enrolled-title">Enrolled Courses</h2>
+					</div>
+					<span class="course-count">4 active courses</span>
+				</div>
+
+				<div class="course-grid">
+					<article class="course-card course-lilac">
+						<div class="course-card-top"><span class="course-code">MSUD203</span><span class="course-mark">01</span></div>
+						<h3>Discrete Mathematics</h3>
+						<p>Learn the mathematical foundations for computer science and engineering.</p>
+						<div class="course-meta"><span>◷</span> Monday &amp; Wednesday</div>
+						<a href="Timetable.html">View course <span>→</span></a>
+					</article>
+					<article class="course-card course-gold">
+						<div class="course-card-top"><span class="course-code">ITUE203</span><span class="course-mark">02</span></div>
+						<h3>Web Development</h3>
+						<p>Learn to build modern, responsive websites and web applications.</p>
+						<div class="course-meta"><span>◷</span> Tuesday &amp; Thursday</div>
+						<a href="Timetable.html">View course <span>→</span></a>
+					</article>
+					<article class="course-card course-cyan">
+						<div class="course-card-top"><span class="course-code">CSUC201</span><span class="course-mark">03</span></div>
+						<h3>Fundamentals of Data Science</h3>
+						<p>Explore the principles and techniques of data analysis and machine learning.</p>
+						<div class="course-meta"><span>◷</span> Monday &amp; Saturday</div>
+						<a href="Timetable.html">View course <span>→</span></a>
+					</article>
+					<article class="course-card course-mint">
+						<div class="course-card-top"><span class="course-code">ITUC201</span><span class="course-mark">04</span></div>
+						<h3>Fundamentals of Computer Networks</h3>
+						<p>Understand the principles and practices of computer networking.</p>
+						<div class="course-meta"><span>◷</span> Wednesday &amp; Friday</div>
+						<a href="Timetable.html">View course <span>→</span></a>
+					</article>
+				</div>
+			</section>
+		</main>
+	</div>
+</body>
+</html>

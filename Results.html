@@ -1,0 +1,689 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results | Student Portal</title>
+    <link rel="stylesheet" href="CSS Files/Results.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="portal">
+    <aside class="sidebar">
+        <div class="logo">
+            <span>Student</span>
+            <span>Portal</span>
+        </div>
+        <nav class="side-menu">
+            <a href="HomePage.html" class="menu-item">
+                <span class="menu-icon"><img class="result-icon" src="Images/Icons/house.svg" alt=""></span>
+                <span>Home</span>
+            </a>
+            <a href="profile.html" class="menu-item">
+                <span class="menu-icon"><img class="result-icon" src="Images/Icons/user-round.svg" alt=""></span>
+                <span>Profile</span>
+            </a>
+            <a href="courses.html" class="menu-item">
+                <span class="menu-icon"><img class="result-icon" src="Images/Icons/book-open.svg" alt=""></span>
+                <span>Courses</span>
+            </a>
+            <a href="assignments.html" class="menu-item">
+                <span class="menu-icon"><img class="result-icon" src="Images/Icons/clipboard-list.svg" alt=""></span>
+                <span>Assignments</span>
+            </a>
+            <a href="results.html" class="menu-item active">
+                <span class="menu-icon"><img class="result-icon" src="Images/Icons/chart-column.svg" alt=""></span>
+                <span>Results</span>
+            </a>
+            <a href="feedback.html" class="menu-item">
+                <span class="menu-icon"><img class="result-icon" src="Images/Icons/message-square.svg" alt=""></span>
+                <span>Feedback</span>
+            </a>
+            <a href="about.html" class="menu-item">
+                <span class="menu-icon"><img class="result-icon" src="Images/Icons/circle-help.svg" alt=""></span>
+                <span>About Us</span>
+            </a>
+        </nav>
+        <a href="#" class="logout">
+            <span class="logout-icon"><img class="result-icon" src="Images/Icons/log-out.svg" alt=""></span>
+            <span>Log out</span>
+        </a>
+    </aside>
+    <main class="main-content">
+        <section class="page-header">
+            <div>
+                <div class="small-label">
+                    ACADEMIC PERFORMANCE
+                </div>
+                <h1>
+                    Your <span>Results</span>
+                </h1>
+                <p>
+                    Track your academic performance, grades and progress
+                    across every semester.
+                </p>
+            </div>
+            <div class="header-actions">
+                <select id="semesterSelect" class="semester-select">
+                    <option value="sem2">Semester 2</option>
+                    <option value="sem1">Semester 1</option>
+                    <option value="sem3">Semester 3</option>
+                </select>
+                <button class="download-btn" onclick="downloadResult()">
+                    <img class="result-icon" src="Images/Icons/download.svg" alt=""> Download Result
+                </button>
+            </div>
+        </section>
+        <div class="view-switcher">
+            <button id="dashboardBtn" class="view-btn active" onclick="showDashboard()">
+                <img class="result-icon" src="Images/Icons/layout-dashboard.svg" alt="">
+                Dashboard View
+            </button>
+            <button id="circularBtn" class="view-btn" onclick="showCircularView()">
+                <img class="result-icon" src="Images/Icons/chart-pie.svg" alt="">
+                Visual Result
+            </button>
+        </div>
+        <section id="dashboardView" class="result-view active-view">
+            <div class="stats-grid">
+                <div class="stat-card blue-card">
+                    <div class="stat-icon blue-icon">
+                        <img class="result-icon" src="Images/Icons/gauge.svg" alt="">
+                    </div>
+                    <div class="stat-info">
+                        <span>Current CGPA</span>
+                        <strong id="cgpaValue">8.72</strong>
+                        <small class="positive">
+                            <img class="result-icon" src="Images/Icons/arrow-up.svg" alt=""> 0.42 from last semester
+                        </small>
+                    </div>
+                </div>
+                <div class="stat-card purple-card">
+                    <div class="stat-icon purple-icon">
+                        <img class="result-icon" src="Images/Icons/star.svg" alt="">
+                    </div>
+                    <div class="stat-info">
+                        <span>Current SGPA</span>
+                        <strong>
+                            9.10
+                        </strong>
+                        <small class="positive">
+                            <img class="result-icon" src="Images/Icons/arrow-up.svg" alt=""> 0.30 improvement
+                        </small>
+                    </div>
+                </div>
+                <div class="stat-card yellow-card">
+                    <div class="stat-icon yellow-icon">
+                        <img class="result-icon" src="Images/Icons/wallet-cards.svg" alt="">
+                    </div>
+                    <div class="stat-info">
+                        <span>Credits Earned</span>
+                        <strong>
+                            24/24
+                        </strong>
+                        <small>
+                            All credits completed
+                        </small>
+                    </div>
+                </div>
+                <div class="stat-card cyan-card">
+                    <div class="stat-icon cyan-icon">
+                        <img class="result-icon" src="Images/Icons/trending-up.svg" alt="">
+                    </div>
+                    <div class="stat-info">
+                        <span>Academic Progress</span>
+                        <strong>
+                            92%
+                        </strong>
+                        <small class="positive">
+                            <img class="result-icon" src="Images/Icons/arrow-up.svg" alt=""> 6% this semester
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="middle-grid">
+                <div class="glass-card chart-card">
+                    <div class="card-heading">
+                        <div>
+                            <span class="card-label">
+                                PERFORMANCE
+                            </span>
+                            <h2>
+                                Academic Trend
+                            </h2>
+                        </div>
+                        <div class="trend-badge">
+                            <img class="result-icon" src="Images/Icons/trending-up.svg" alt=""> Improving
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="y-axis">
+                            <span>10</span>
+                            <span>8</span>
+                            <span>6</span>
+                            <span>4</span>
+                            <span>2</span>
+                        </div>
+                        <div class="chart-area">
+                            <div class="grid-line line1"></div>
+                            <div class="grid-line line2"></div>
+                            <div class="grid-line line3"></div>
+                            <div class="grid-line line4"></div>
+                            <div class="grid-line line5"></div>
+                            <svg
+                                class="performance-svg"
+                                viewBox="0 0 600 220"
+                                preserveAspectRatio="none">
+                                <defs>
+                                    <linearGradient
+                                        id="chartGradient"
+                                        x1="0"
+                                        y1="0"
+                                        x2="1"
+                                        y2="0">
+                                        <stop offset="0%"
+                                              stop-color="#39a9ff"/>
+                                        <stop offset="50%"
+                                              stop-color="#8b5cf6"/>
+                                        <stop offset="100%"
+                                              stop-color="#20e3b2"/>
+                                    </linearGradient>
+                                    <linearGradient
+                                        id="areaGradient"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1">
+                                        <stop offset="0%"
+                                              stop-color="#4388ff"
+                                              stop-opacity=".30"/>
+                                        <stop offset="100%"
+                                              stop-color="#4388ff"
+                                              stop-opacity="0"/>
+                                    </linearGradient>
+                                </defs>
+                                <path
+                                    class="chart-area-fill"
+                                    d="M0,160
+                                       C60,150 70,130 120,140
+                                       C170,150 180,100 240,110
+                                       C290,120 300,75 360,85
+                                       C410,95 430,55 480,65
+                                       C530,75 550,35 600,45
+                                       L600,220
+                                       L0,220 Z"/>
+                                <path
+                                    class="chart-line"
+                                    d="M0,160
+                                       C60,150 70,130 120,140
+                                       C170,150 180,100 240,110
+                                       C290,120 300,75 360,85
+                                       C410,95 430,55 480,65
+                                       C530,75 550,35 600,45"/>
+                                <circle cx="0" cy="160" r="6"
+                                        class="chart-point"/>
+                                <circle cx="120" cy="140" r="6"
+                                        class="chart-point"/>
+                                <circle cx="240" cy="110" r="6"
+                                        class="chart-point"/>
+                                <circle cx="360" cy="85" r="6"
+                                        class="chart-point"/>
+                                <circle cx="480" cy="65" r="6"
+                                        class="chart-point"/>
+                                <circle cx="600" cy="45" r="7"
+                                        class="chart-point current"/>
+                            </svg>
+                            <div class="chart-tooltip">
+                                SGPA <strong>9.10</strong>
+                            </div>
+                            <div class="x-axis">
+                                <span>Sem 1</span>
+                                <span>Sem 2</span>
+                                <span>Sem 3</span>
+                                <span>Sem 4</span>
+                                <span>Sem 5</span>
+                                <span>Current</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card achievement-card">
+                    <div class="card-heading">
+                        <div>
+                            <span class="card-label">
+                                ACHIEVEMENTS
+                            </span>
+                            <h2>
+                                Your Highlights
+                            </h2>
+                        </div>
+                        <span class="trophy">
+                            <img class="result-icon" src="Images/Icons/trophy.svg" alt="">
+                        </span>
+                    </div>
+                    <div class="achievement-list">
+                        <div class="achievement">
+                            <div class="achievement-icon gold">
+                                <img class="result-icon" src="Images/Icons/star.svg" alt="">
+                            </div>
+                            <div>
+                                <strong>
+                                    Top Performer
+                                </strong>
+                                <p>
+                                    Excellent overall performance
+                                </p>
+                            </div>
+                        </div>
+                        <div class="achievement">
+                            <div class="achievement-icon green">
+                                <img class="result-icon" src="Images/Icons/trending-up.svg" alt="">
+                            </div>
+                            <div>
+                                <strong>
+                                    CGPA Improved
+                                </strong>
+                                <p>
+                                    Increased by 0.42 points
+                                </p>
+                            </div>
+                        </div>
+                        <div class="achievement">
+                            <div class="achievement-icon purple">
+                                <img class="result-icon" src="Images/Icons/zap.svg" alt="">
+                            </div>
+                            <div>
+                                <strong>
+                                    5 A+ Grades
+                                </strong>
+                                <p>
+                                    Outstanding subject results
+                                </p>
+                            </div>
+                        </div>
+                        <div class="achievement">
+                            <div class="achievement-icon blue">
+                                <img class="result-icon" src="Images/Icons/check.svg" alt="">
+                            </div>
+                            <div>
+                                <strong>
+                                    Full Credits
+                                </strong>
+                                <p>
+                                    24 out of 24 credits earned
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card subjects-card">
+                <div class="subjects-header">
+                    <div>
+                        <span class="card-label">
+                            SUBJECT RESULTS
+                        </span>
+                        <h2>
+                            Subject Performance
+                        </h2>
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter active"
+                                onclick="filterSubjects('all', this)">
+                            All
+                        </button>
+                        <button class="filter"
+                                onclick="filterSubjects('excellent', this)">
+                            A+
+                        </button>
+                        <button class="filter"
+                                onclick="filterSubjects('good', this)">
+                            A
+                        </button>
+                    </div>
+                </div>
+                <div class="subjects-list">
+                    <div class="subject-row excellent"
+                         onclick="openSubject('Mathematics',92,'A+','28/30','64/70','18/20','91%')">
+                        <div class="subject-info">
+                            <div class="subject-icon math">
+                                <img class="result-icon" src="Images/Icons/sigma.svg" alt="">
+                            </div>
+                            <div>
+                                <strong>
+                                    Mathematics
+                                </strong>
+                                <span>
+                                    4 Credits
+                                </span>
+                            </div>
+                        </div>
+                        <div class="grade">
+                            A+
+                        </div>
+                        <div class="marks">
+                            <strong>92</strong>
+                            <span>/ 100</span>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="progress">
+                                <span style="width:92%"></span>
+                            </div>
+                            <small>
+                                92%
+                            </small>
+                        </div>
+                        <div class="arrow">
+                            <img class="result-icon" src="Images/Icons/arrow-right.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="subject-row good"
+                         onclick="openSubject('Physics',86,'A','26/30','60/70','17/20','88%')">
+                        <div class="subject-info">
+                            <div class="subject-icon physics">
+                                <img class="result-icon" src="Images/Icons/atom.svg" alt="">
+                            </div>
+                            <div>
+                                <strong>
+                                    Physics
+                                </strong>
+                                <span>
+                                    4 Credits
+                                </span>
+                            </div>
+                        </div>
+                        <div class="grade">
+                            A
+                        </div>
+                        <div class="marks">
+                            <strong>86</strong>
+                            <span>/ 100</span>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="progress">
+                                <span style="width:86%"></span>
+                            </div>
+                            <small>
+                                86%
+                            </small>
+                        </div>
+                        <div class="arrow">
+                            <img class="result-icon" src="Images/Icons/arrow-right.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="subject-row excellent"
+                         onclick="openSubject('Programming',94,'A+','29/30','65/70','19/20','95%')">
+                        <div class="subject-info">
+                            <div class="subject-icon programming">
+                                <img class="result-icon" src="Images/Icons/code-xml.svg" alt="">
+                            </div>
+                            <div>
+                                <strong>
+                                    Programming
+                                </strong>
+                                <span>
+                                    4 Credits
+                                </span>
+                            </div>
+                        </div>
+                        <div class="grade">
+                            A+
+                        </div>
+                        <div class="marks">
+                            <strong>94</strong>
+                            <span>/ 100</span>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="progress">
+                                <span style="width:94%"></span>
+                            </div>
+                            <small>
+                                94%
+                            </small>
+                        </div>
+                        <div class="arrow">
+                            <img class="result-icon" src="Images/Icons/arrow-right.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="subject-row excellent"
+                         onclick="openSubject('Digital Logic',89,'A+','27/30','62/70','18/20','90%')">
+                        <div class="subject-info">
+                            <div class="subject-icon logic">
+                                <img class="result-icon" src="Images/Icons/binary.svg" alt="">
+                            </div>
+                            <div>
+                                <strong>
+                                    Digital Logic
+                                </strong>
+                                <span>
+                                    4 Credits
+                                </span>
+                            </div>
+                        </div>
+                        <div class="grade">
+                            A+
+                        </div>
+                        <div class="marks">
+                            <strong>89</strong>
+                            <span>/ 100</span>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="progress">
+                                <span style="width:89%"></span>
+                            </div>
+                            <small>
+                                89%
+                            </small>
+                        </div>
+                        <div class="arrow">
+                            <img class="result-icon" src="Images/Icons/arrow-right.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-icon">
+                        <img class="result-icon" src="Images/Icons/sparkles.svg" alt="">
+                    </div>
+                    <div>
+                        <span>
+                            STRONGEST SUBJECT
+                        </span>
+                        <h3>
+                            Programming
+                        </h3>
+                        <p>
+                            You scored <b>94%</b>, your highest
+                            result this semester.
+                        </p>
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-icon green">
+                        <img class="result-icon" src="Images/Icons/arrow-up-right.svg" alt="">
+                    </div>
+                    <div>
+                        <span>
+                            PERFORMANCE INSIGHT
+                        </span>
+                        <h3>
+                            Keep improving
+                        </h3>
+                        <p>
+                            Your SGPA increased by
+                            <b>0.30</b> compared with last semester.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="circularView"
+                 class="result-view circular-view">
+            <div class="visual-header">
+                <div>
+                    <span class="card-label">
+                        VISUAL PERFORMANCE
+                    </span>
+                    <h2>
+                        Your Result at a Glance
+                    </h2>
+                    <p>
+                        Explore your performance through interactive
+                        score circles.
+                    </p>
+                </div>
+                <div class="overall-score">
+                    <span>
+                        OVERALL CGPA
+                    </span>
+                    <strong>
+                        8.72
+                    </strong>
+                    <small>
+                        Excellent Progress
+                    </small>
+                </div>
+            </div>
+            <div class="circular-grid">
+                <div class="circular-card"
+                     onclick="openSubject('Mathematics',92,'A+','28/30','64/70','18/20','91%')">
+                    <div class="circle"
+                         style="--percentage:92">
+                        <div class="circle-inner">
+                            <strong>
+                                92%
+                            </strong>
+                            <span>
+                                A+
+                            </span>
+                        </div>
+                    </div>
+                    <h3>Mathematics</h3>
+                    <p>4 Credits</p>
+                    <button>
+                        View Details <img class="result-icon" src="Images/Icons/arrow-right.svg" alt="">
+                    </button>
+                </div>
+                <div class="circular-card"
+                     onclick="openSubject('Physics',86,'A','26/30','60/70','17/20','88%')">
+                    <div class="circle"
+                         style="--percentage:86">
+                        <div class="circle-inner">
+                            <strong>86%</strong>
+                            <span>A</span>
+                        </div>
+                    </div>
+                    <h3>Physics</h3>
+                    <p>4 Credits</p>
+                    <button>
+                        View Details <img class="result-icon" src="Images/Icons/arrow-right.svg" alt="">
+                    </button>
+                </div>
+                <div class="circular-card"
+                     onclick="openSubject('Programming',94,'A+','29/30','65/70','19/20','95%')">
+                    <div class="circle"
+                         style="--percentage:94">
+                        <div class="circle-inner">
+                            <strong>94%</strong>
+                            <span>A+</span>
+                        </div>
+                    </div>
+                    <h3>Programming</h3>
+                    <p>4 Credits</p>
+                    <button>
+                        View Details <img class="result-icon" src="Images/Icons/arrow-right.svg" alt="">
+                    </button>
+                </div>
+                <div class="circular-card"
+                     onclick="openSubject('Digital Logic',89,'A+','27/30','62/70','18/20','90%')">
+                    <div class="circle"
+                         style="--percentage:89">
+                        <div class="circle-inner">
+                            <strong>89%</strong>
+                            <span>A+</span>
+                        </div>
+                    </div>
+                    <h3>Digital Logic</h3>
+                    <p>4 Credits</p>
+                    <button>
+                        View Details <img class="result-icon" src="Images/Icons/arrow-right.svg" alt="">
+                    </button>
+                </div>
+            </div>
+            <div class="circular-summary">
+                <div class="summary-item">
+                    <span>Average Score</span>
+                    <strong>90.2%</strong>
+                </div>
+                <div class="summary-item">
+                    <span>A+ Subjects</span>
+                    <strong>3</strong>
+                </div>
+                <div class="summary-item">
+                    <span>Credits</span>
+                    <strong>24</strong>
+                </div>
+                <div class="summary-item">
+                    <span>Result Status</span>
+                    <strong class="passed">
+                        PASSED <img class="result-icon" src="Images/Icons/check.svg" alt="">
+                    </strong>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+<div id="subjectModal" class="modal-overlay">
+    <div class="subject-modal">
+        <button class="close-modal"
+                onclick="closeSubject()">
+            <img class="result-icon" src="Images/Icons/x.svg" alt="Close">
+        </button>
+        <div class="modal-top">
+            <div class="modal-subject-icon">
+                <img class="result-icon" src="Images/Icons/star.svg" alt="">
+            </div>
+            <div>
+                <span>SUBJECT RESULT</span>
+                <h2 id="modalSubject">Mathematics</h2>
+            </div>
+        </div>
+        <div class="modal-score">
+            <div>
+                <span>FINAL SCORE</span>
+                <strong id="modalScore">92</strong>
+                <small>/ 100</small>
+            </div>
+            <div class="modal-grade" id="modalGrade">A+</div>
+        </div>
+        <div class="mark-breakdown">
+            <div>
+                <span>Internal</span>
+                <strong id="modalInternal">28/30</strong>
+            </div>
+            <div>
+                <span>External</span>
+                <strong id="modalExternal">64/70</strong>
+            </div>
+            <div>
+                <span>Practical</span>
+                <strong id="modalPractical">18/20</strong>
+            </div>
+            <div>
+                <span>Attendance</span>
+                <strong id="modalAttendance">91%</strong>
+            </div>
+        </div>
+        <div class="teacher-feedback">
+            <span>TEACHER FEEDBACK</span>
+            <p>"Excellent performance. Keep maintainingconsistency and continue working on advancedconcepts."</p>
+        </div>
+        <button class="modal-close-btn" onclick="closeSubject()">Done</button>
+    </div>
+</div>
+<script src="JavaScript Files/Results.js"></script>
+</body>
+</html>

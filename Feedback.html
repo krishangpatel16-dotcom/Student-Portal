@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="CSS Files/HomePage.css">
+    <link rel="stylesheet" href="CSS Files/Feedback.css">
+</head>
+<body class="body1">
+    <div class="portal-layout">
+        <aside class="sidebar" aria-label="Sidebar navigation">
+            <div class="brand-wrap"><h1 class="brand-title">Student<br>Portal</h1></div>
+            <nav class="sidebar-nav" aria-label="Main navigation">
+                <a href="HomePage.html" class="nav-item"><span class="nav-icon">⌂</span><span>Home</span></a>
+                <a href="Profile.html" class="nav-item"><span class="nav-icon">◉</span><span>Profile</span></a>
+                <a href="Courses.html" class="nav-item"><span class="nav-icon">▣</span><span>Courses</span></a>
+                <a href="Assignments.html" class="nav-item"><span class="nav-icon">▤</span><span>Assignments</span></a>
+                <a href="Results.html" class="nav-item"><span class="nav-icon">▨</span><span>Results</span></a>
+                <a href="Feedback.html" class="nav-item active"><span class="nav-icon">▣</span><span>Feedback</span></a>
+                <a href="AboutUs.html" class="nav-item"><span class="nav-icon">?</span><span>About Us</span></a>
+                <a href="LoginPage.html" class="nav-item logout-item"><span class="nav-icon">↪</span><span>Log out</span></a>
+            </nav>
+        </aside>
+        <main class="main-panel page-content">
+            <div class="form-container">
+                <h1>Feedback Form</h1>
+        
+        <form>
+            <div class="input-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter Name">
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter email">
+            </div>
+
+            <div class="input-group">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" placeholder="Enter subject">
+            </div>
+
+            <div class="input-group">
+                <label for="message">Message:</label>
+                <textarea id="message" rows="5" placeholder="Enter message"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                Submit <span>&rarr;</span>
+            </button>
+        </form>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
