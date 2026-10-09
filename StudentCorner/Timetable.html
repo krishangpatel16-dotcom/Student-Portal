@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Timetable | Student Portal</title>
+	<link rel="stylesheet" href="CSS Files/HomePage.css">
+	<link rel="stylesheet" href="CSS Files/Timetable.css">
+	<link rel="stylesheet" href="CSS Files/Sidebar.css">
+</head>
+<body>
+	<div class="portal-layout">
+		<aside class="sidebar" aria-label="Sidebar navigation">
+			<div class="logo">
+				<div class="logo-icon">🎓</div>
+				<div class="logo-text">
+					<span class="logo-main">Student</span>
+					<span class="logo-sub">Portal</span>
+				</div>
+			</div>
+			<nav class="side-menu" aria-label="Main navigation">
+				<a href="HomePage.html" class="menu-item"><span class="menu-icon"><img src="Images/Icons/house.svg" alt=""></span><span>Home</span></a>
+				<a href="Profile.html" class="menu-item"><span class="menu-icon"><img src="Images/Icons/user-round.svg" alt=""></span><span>Profile</span></a>
+				<a href="Courses.html" class="menu-item"><span class="menu-icon"><img src="Images/Icons/book-open.svg" alt=""></span><span>Courses</span></a>
+				<a href="Assignments.html" class="menu-item"><span class="menu-icon"><img src="Images/Icons/clipboard-list.svg" alt=""></span><span>Assignments</span></a>
+				<a href="Results.html" class="menu-item"><span class="menu-icon"><img src="Images/Icons/chart-column.svg" alt=""></span><span>Results</span></a>
+				<a href="Feedback.html" class="menu-item"><span class="menu-icon"><img src="Images/Icons/message-square.svg" alt=""></span><span>Feedback</span></a>
+			<a href="DataView.html" class="menu-item"><span class="menu-icon"><img src="Images/Icons/chart-column.svg" alt=""></span><span>Data View</span></a>
+			<a href="AboutUs.html" class="menu-item"><span class="menu-icon"><img src="Images/Icons/circle-help.svg" alt=""></span><span>About Us</span></a>
+			<a href="PHP Files/logout.php" class="menu-item logout"><span class="logout-icon"><img src="Images/Icons/log-out.svg" alt=""></span><span>Log out</span></a>
+			</nav>
+		</aside>
+
+		<main class="main-panel timetable-panel">
+			<header class="timetable-header">
+				<div>
+					<p class="eyebrow">Plan your week</p>
+					<h1>Class Schedule</h1>
+					<p>Keep track of your classes, locations and upcoming sessions.</p>
+				</div>
+				<div class="today-badge">
+					<span>Next class</span>
+					<strong>Today at 9:00 AM</strong>
+				</div>
+			</header>
+
+			<section class="schedule-table-wrap" aria-label="Weekly class schedule">
+				<table class="schedule-table">
+					<thead>
+						<tr><th>Course</th><th>Code</th><th>Day</th><th>Time</th><th>Location</th><th>Status</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>Discrete Mathematics</td><td>MSUD203</td><td>Monday</td><td>09:00 AM - 10:30 AM</td><td>Design Studio A</td><td><span class="status status-current">Today</span></td></tr>
+						<tr><td>Web Development</td><td>ITUE203</td><td>Tuesday</td><td>01:30 PM - 03:00 PM</td><td>Computer Lab 3</td><td><span class="status status-upcoming">Upcoming</span></td></tr>
+						<tr><td>Fundamentals of Data Science</td><td>CSUC201</td><td>Thursday</td><td>11:00 AM - 12:30 PM</td><td>Design Lab 2</td><td><span class="status status-upcoming">Upcoming</span></td></tr>
+						<tr><td>Fundamentals of Computer Networks</td><td>ITUC201</td><td>Friday</td><td>02:00 PM - 05:00 PM</td><td>Animation Studio</td><td><span class="status status-upcoming">Upcoming</span></td></tr>
+					</tbody>
+				</table>
+			</section>
+		</main>
+	</div>
+</body>
+</html>

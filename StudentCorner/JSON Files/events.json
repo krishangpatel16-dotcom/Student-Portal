@@ -1,0 +1,107 @@
+[
+  { 
+    "id": 1, 
+    "title": "Orientation Program",
+    "date": "2026-08-10", 
+    "venue": "Main Auditorium", 
+    "category": "Campus" 
+  },
+  { 
+    "id": 2, 
+    "title": "Sports Day", 
+    "date": "2026-08-18", 
+    "venue": "Sports Ground", 
+    "category": "Sports" 
+  },
+  { 
+    "id": 3, 
+    "title": "Coding Competition", 
+    "date": "2026-08-25", 
+    "venue": "Computer Lab", 
+    "category": "Tech" 
+  },
+  { 
+    "id": 4, 
+    "title": "Teacher's Day", 
+    "date": "2026-09-05", 
+    "venue": "Seminar Hall", 
+    "category": "Campus" 
+  },
+  { 
+    "id": 5, 
+    "title": "Technical Workshop", 
+    "date": "2026-09-15", 
+    "venue": "Block A", 
+    "category": "Workshop" 
+  },
+  { 
+    "id": 6, 
+    "title": "Career Guidance Seminar", 
+    "date": "2026-09-22", 
+    "venue": "Lecture Hall 2", 
+    "category": "Career" 
+  },
+  { 
+    "id": 7, 
+    "title": "Hackathon Bootcamp", 
+    "date": "2026-09-28", 
+    "venue": "Innovation Lab", 
+    "category": "Tech" 
+  },
+  { 
+    "id": 8, 
+    "title": "Cultural Fest", 
+    "date": "2026-10-02", 
+    "venue": "Open Stage", 
+    "category": "Cultural" 
+  },
+  { 
+    "id": 9, 
+    "title": "Guest Lecture", 
+    "date": "2026-10-10", 
+    "venue": "Conference Room", 
+    "category": "Academic" 
+  },
+  { 
+    "id": 10, 
+    "title": "Robotics Club Meetup", 
+    "date": "2026-10-18", 
+    "venue": "Workshop Room", 
+    "category": "Tech" 
+  },
+  { 
+    "id": 11, 
+    "title": "Inter-College Debate", 
+    "date": "2026-10-24", 
+    "venue": "Auditorium", 
+    "category": "Campus" 
+  },
+  { 
+    "id": 12, 
+    "title": "Health Awareness Drive", 
+    "date": "2026-11-01", 
+    "venue": "Campus Plaza", 
+    "category": "Health" 
+  },
+  { 
+    "id": 13, 
+    "title": "Alumni Interaction", 
+    "date": "2026-11-08", 
+    "venue": "Main Hall", 
+    "category": "Career" 
+  },
+  { 
+    "id": 14, 
+    "title": "Science Expo", 
+    "date": "2026-11-15", 
+    "venue": "Science Block", 
+    "category": "Academic" 
+  },
+  { 
+    "id": 15, 
+    "title": "Annual Fest", 
+    "date": "2026-11-25", 
+    "venue": "Campus Ground", 
+    "category": "Cultural" 
+  }
+]

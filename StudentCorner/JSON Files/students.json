@@ -1,0 +1,114 @@
+[
+  { 
+    "id": 1, 
+    "name": "Aarav Shah", 
+    "course": "BCA", 
+    "year": "2nd Year", 
+    "city": "Ahmedabad", 
+    "cgpa": 8.9 
+  },
+  { 
+    "id": 2, 
+    "name": "Meera Patel", 
+    "course": "BSc", 
+    "year": "1st Year", 
+    "city": "Surat", 
+    "cgpa": 8.4 
+  },
+  { 
+    "id": 3, 
+    "name": "Rohan Verma", 
+    "course": "BTech", 
+    "year": "3rd Year", 
+    "city": "Rajkot", 
+    "cgpa": 9.1 
+  },
+  { 
+    "id": 4, 
+    "name": "Isha Desai", 
+    "course": "MBA", 
+    "year": "1st Year", 
+    "city": "Vadodara", 
+    "cgpa": 8.7 
+  },
+  { 
+    "id": 5, 
+    "name": "Karan Joshi", 
+    "course": "BCA", 
+    "year": "3rd Year", 
+    "city": "Gandhinagar", 
+    "cgpa": 8.6 
+  },
+  { 
+    "id": 6, 
+    "name": "Priya Nair", 
+    "course": "BSc", 
+    "year": "2nd Year", 
+    "city": "Bhavnagar", 
+    "cgpa": 9.0 
+  },
+  { 
+    "id": 7, 
+    "name": "Dev Mehta", 
+    "course": "BTech", 
+   "year": "4th Year", 
+   "city":"Ahmedabad", 
+   "cgpa": 8.8
+  },
+  { 
+    "id": 8, 
+    "name": "Neha Shah", 
+    "course": "MBA", 
+    "year": "2nd Year", 
+    "city": "Surat", 
+    "cgpa": 8.5 
+  },
+  { 
+    "id": 9, 
+    "name": "Harsh Trivedi", 
+    "course": "BCA", 
+    "year": "1st Year", 
+    "city": "Rajkot", 
+    "cgpa": 7.9 
+  },
+  { 
+    "id": 10, 
+    "name": "Sonal Gupta", 
+    "course": "BSc", 
+    "year": "3rd Year", 
+    "city": "Vadodara", 
+    "cgpa": 9.2 
+  },
+  { 
+    "id": 11, 
+    "name": "Yash Patel", 
+    "course": "BTech", 
+    "year": "2nd Year", 
+    "city": "Bhavnagar", 
+   "cgpa": 8.3 
+  },
+  { 
+    "id": 12, 
+    "name": "Anjali Rao", 
+    "course": "MBA", 
+    "year": "3rd Year", 
+    "city": "Gandhinagar", 
+    "cgpa": 8.9 
+  },
+  { 
+    "id": 14, 
+    "name": "Mansi Solanki", 
+    "course": "BSc", 
+    "year": "1st Year", 
+    "city": "Rajkot", 
+    "cgpa": 8.7 
+  },
+  { 
+    "id": 15, 
+    "name": "Vivek Soni", 
+    "course": "BTech", 
+    "year": "3rd Year", 
+    "city": "Surat", 
+    "cgpa": 9.3 
+  }
+]

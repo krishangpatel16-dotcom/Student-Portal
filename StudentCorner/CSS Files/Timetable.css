@@ -1,0 +1,125 @@
+:root {
+	--timetable-border: rgba(148, 163, 184, 0.16);
+}
+
+.timetable-panel {
+	padding-top: 44px;
+}
+
+.timetable-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	margin-bottom: 30px;
+}
+
+.eyebrow {
+	margin-bottom: 9px;
+	color: #60a5fa;
+	font-size: 0.78rem;
+	font-weight: 800;
+	letter-spacing: 0.11em;
+	text-transform: uppercase;
+}
+
+.timetable-header h1 {
+	color: #f8fafc;
+	font-size: clamp(2rem, 4vw, 3rem);
+	line-height: 1.08;
+}
+
+.timetable-header p:last-child {
+	margin-top: 10px;
+	color: #cbd5e1;
+	font-size: 1rem;
+}
+
+.today-badge {
+	min-width: 190px;
+	padding: 16px 18px;
+	border: 1px solid var(--timetable-border);
+	border-radius: 13px;
+	background: rgba(255, 255, 255, 0.06);
+	color: #94a3b8;
+	font-size: 0.8rem;
+}
+
+.today-badge strong {
+	display: block;
+	margin-top: 6px;
+	color: #f8fafc;
+	font-size: 1rem;
+}
+
+.schedule-table-wrap {
+	overflow-x: auto;
+	border: 1px solid var(--timetable-border);
+	border-radius: 16px;
+	background: rgba(15, 23, 42, 0.55);
+	box-shadow: 0 14px 28px rgba(2, 6, 23, 0.25);
+}
+
+.schedule-table {
+	width: 100%;
+	min-width: 760px;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+.schedule-table th,
+.schedule-table td {
+	padding: 17px 18px;
+	border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+	white-space: nowrap;
+}
+
+.schedule-table th {
+	color: #94a3b8;
+	font-size: 0.72rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.schedule-table td {
+	color: #dbeafe;
+	font-size: 0.92rem;
+}
+
+.schedule-table tbody tr {
+	transition: background-color 0.2s ease;
+}
+
+.schedule-table tbody tr:hover {
+	background: rgba(96, 165, 250, 0.08);
+}
+
+.schedule-table tbody tr:last-child td {
+	border-bottom: none;
+}
+
+.status {
+	display: inline-block;
+	padding: 5px 9px;
+	border-radius: 999px;
+	font-size: 0.73rem;
+	font-weight: 800;
+}
+
+.status-current { background: rgba(52, 211, 153, 0.18); color: #6ee7b7; }
+.status-upcoming { background: rgba(96, 165, 250, 0.16); color: #93c5fd; }
+
+@media (max-width: 700px) {
+	.timetable-panel {
+		padding: 28px 16px;
+	}
+
+	.timetable-header {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.today-badge {
+		width: 100%;
+	}
+}

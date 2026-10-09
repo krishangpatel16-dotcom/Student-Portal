@@ -1,0 +1,281 @@
+body {
+    min-height: 100vh;
+    background: #0b1630;
+    color: #e6eef8;
+    font-family: "Inter", sans-serif;
+}
+
+.studenthub-main {
+    min-height: 100vh;
+    padding: 42px clamp(20px, 4vw, 56px) 56px;
+}
+
+.studenthub-heading {
+    margin: 0 auto 28px;
+    max-width: 1120px;
+}
+
+.studenthub-heading h1 {
+    color: #f8fafc;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    letter-spacing: -0.04em;
+    margin: 8px 0;
+}
+
+.studenthub-heading > p:last-child {
+    color: #9aabc6;
+    line-height: 1.6;
+}
+
+.studenthub-eyebrow {
+    color: #75a7ff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.studenthub-status,
+.studenthub-panel,
+.stat-card {
+    border: 1px solid rgba(148, 163, 184, 0.13);
+    border-radius: 18px;
+}
+
+.studenthub-status {
+    margin: 0 auto 18px;
+    max-width: 1120px;
+    padding: 14px 18px;
+}
+
+.studenthub-status.success {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: rgba(74, 222, 128, 0.28);
+    color: #bbf7d0;
+}
+
+.studenthub-status.error {
+    background: rgba(248, 113, 113, 0.1);
+    border-color: rgba(248, 113, 113, 0.28);
+    color: #fecaca;
+}
+
+.studenthub-stats,
+.studenthub-panel {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1120px;
+}
+
+.studenthub-stats {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 18px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.2), rgba(15, 23, 42, 0.9));
+    display: grid;
+    gap: 8px;
+    padding: 20px 22px;
+}
+
+.stat-card span {
+    color: #9aabc6;
+    font-size: 0.9rem;
+}
+
+.stat-card strong {
+    color: #f8fafc;
+    font-size: 1.8rem;
+}
+
+.studenthub-panel {
+    background: rgba(15, 23, 42, 0.88);
+    margin-bottom: 18px;
+    padding: clamp(18px, 3vw, 26px);
+}
+
+.panel-heading {
+    align-items: center;
+    display: flex;
+    gap: 14px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.panel-heading h2 {
+    color: #f8fafc;
+    font-size: 1.25rem;
+    margin: 5px 0 0;
+}
+
+.panel-badge,
+.category-tag {
+    background: rgba(59, 130, 246, 0.13);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    border-radius: 999px;
+    color: #bfdbfe;
+    font-size: 0.75rem;
+    padding: 6px 10px;
+    white-space: nowrap;
+}
+
+.registration-form {
+    align-items: end;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+}
+
+.form-field {
+    display: grid;
+    gap: 8px;
+}
+
+.form-field label {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.form-field select {
+    appearance: none;
+    background: #111d35;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    border-radius: 10px;
+    color: #e6eef8;
+    font: inherit;
+    min-height: 46px;
+    padding: 0 12px;
+    width: 100%;
+}
+
+.form-field select:focus {
+    border-color: #60a5fa;
+    outline: 2px solid rgba(96, 165, 250, 0.22);
+}
+
+.studenthub-button {
+    background: linear-gradient(90deg, #2563eb, #3b82f6);
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    min-height: 46px;
+    padding: 0 18px;
+}
+
+.studenthub-button:hover {
+    filter: brightness(1.1);
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+.studenthub-table {
+    border-collapse: collapse;
+    min-width: 620px;
+    width: 100%;
+}
+
+.studenthub-table th,
+.studenthub-table td {
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    padding: 13px 12px;
+    text-align: left;
+}
+
+.studenthub-table th {
+    color: #93a4c0;
+    font-size: 0.77rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.studenthub-table td {
+    color: #dbe5f3;
+    font-size: 0.9rem;
+}
+
+.studenthub-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.empty-message,
+.setup-panel {
+    color: #a9b8cf;
+    line-height: 1.65;
+}
+
+.setup-panel h2 {
+    color: #f8fafc;
+    margin: 0 0 12px;
+}
+
+.setup-panel ol {
+    margin: 0;
+    padding-left: 22px;
+}
+
+.setup-panel li + li {
+    margin-top: 8px;
+}
+
+.setup-panel code {
+    color: #bfdbfe;
+}
+
+@media (max-width: 1000px) {
+    .portal-layout > .sidebar {
+        width: 220px;
+    }
+
+    .portal-layout > .main-panel {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+    }
+
+    .registration-form {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .studenthub-button {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 700px) {
+    .portal-layout > .sidebar {
+        min-height: auto;
+        position: relative;
+        width: 100%;
+    }
+
+    .portal-layout > .main-panel {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .studenthub-main {
+        padding-top: 28px;
+    }
+
+    .studenthub-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .registration-form {
+        grid-template-columns: 1fr;
+    }
+
+    .studenthub-button {
+        grid-column: auto;
+    }
+}
