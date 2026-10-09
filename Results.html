@@ -5,52 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results | Student Portal</title>
     <link rel="stylesheet" href="CSS Files/Results.css">
+    <link rel="stylesheet" href="CSS Files/Sidebar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="portal">
-    <aside class="sidebar">
-        <div class="logo">
-            <span>Student</span>
-            <span>Portal</span>
-        </div>
-        <nav class="side-menu">
-            <a href="HomePage.html" class="menu-item">
-                <span class="menu-icon"><img class="result-icon" src="Images/Icons/house.svg" alt=""></span>
-                <span>Home</span>
-            </a>
-            <a href="profile.html" class="menu-item">
-                <span class="menu-icon"><img class="result-icon" src="Images/Icons/user-round.svg" alt=""></span>
-                <span>Profile</span>
-            </a>
-            <a href="courses.html" class="menu-item">
-                <span class="menu-icon"><img class="result-icon" src="Images/Icons/book-open.svg" alt=""></span>
-                <span>Courses</span>
-            </a>
-            <a href="assignments.html" class="menu-item">
-                <span class="menu-icon"><img class="result-icon" src="Images/Icons/clipboard-list.svg" alt=""></span>
-                <span>Assignments</span>
-            </a>
-            <a href="results.html" class="menu-item active">
-                <span class="menu-icon"><img class="result-icon" src="Images/Icons/chart-column.svg" alt=""></span>
-                <span>Results</span>
-            </a>
-            <a href="feedback.html" class="menu-item">
-                <span class="menu-icon"><img class="result-icon" src="Images/Icons/message-square.svg" alt=""></span>
-                <span>Feedback</span>
-            </a>
-            <a href="about.html" class="menu-item">
-                <span class="menu-icon"><img class="result-icon" src="Images/Icons/circle-help.svg" alt=""></span>
-                <span>About Us</span>
-            </a>
-        </nav>
-        <a href="#" class="logout">
-            <span class="logout-icon"><img class="result-icon" src="Images/Icons/log-out.svg" alt=""></span>
-            <span>Log out</span>
-        </a>
-    </aside>
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar navigation">
+            <div class="logo">
+                <div class="logo-icon">🎓</div>
+                <div class="logo-text"><span class="logo-main">Student</span><span class="logo-sub">Portal</span></div>
+            </div>
+
+            <nav class="side-menu" aria-label="Main navigation">
+                <a href="HomePage.html" class="menu-item">
+                    <span class="menu-icon"><img src="Images/Icons/house.svg" alt=""></span>
+                    <span>Home</span>
+                </a>
+                <a href="Profile.html" class="menu-item">
+                    <span class="menu-icon"><img src="Images/Icons/user-round.svg" alt=""></span>
+                    <span>Profile</span>
+                </a>
+                <a href="Courses.html" class="menu-item">
+                    <span class="menu-icon"><img src="Images/Icons/book-open.svg" alt=""></span>
+                    <span>Courses</span>
+                </a>
+                <a href="Assignments.html" class="menu-item">
+                    <span class="menu-icon"><img src="Images/Icons/clipboard-list.svg" alt=""></span>
+                    <span>Assignments</span>
+                </a>
+                <a href="Results.html" class="menu-item active" aria-current="page">
+                    <span class="menu-icon"><img src="Images/Icons/chart-column.svg" alt=""></span>
+                    <span>Results</span>
+                </a>
+                <a href="Feedback.html" class="menu-item">
+                    <span class="menu-icon"><img src="Images/Icons/message-square.svg" alt=""></span>
+                    <span>Feedback</span>
+                </a>
+                <a href="DataView.html" class="menu-item">
+                    <span class="menu-icon"><img src="Images/Icons/chart-column.svg" alt=""></span>
+                    <span>Data View</span>
+                </a>
+                <a href="AboutUs.html" class="menu-item">
+                    <span class="menu-icon"><img src="Images/Icons/circle-help.svg" alt=""></span>
+                    <span>About Us</span>
+                </a>
+                <a href="PHP Files/logout.php" class="menu-item logout">
+                    <span class="logout-icon"><img src="Images/Icons/log-out.svg" alt=""></span>
+                    <span>Log out</span>
+                </a>
+            </nav>
+        </aside>
     <main class="main-content">
         <section class="page-header">
             <div>
@@ -86,7 +92,7 @@
                 Visual Result
             </button>
         </div>
-        <section id="dashboardView" class="result-view active-view">
+        <section id="dashboardView" class="result-view active-view" hidden>
             <div class="stats-grid">
                 <div class="stat-card blue-card">
                     <div class="stat-icon blue-icon">
@@ -521,7 +527,7 @@
             </div>
         </section>
         <section id="circularView"
-                 class="result-view circular-view">
+                 class="result-view circular-view" hidden>
             <div class="visual-header">
                 <div>
                     <span class="card-label">
@@ -648,38 +654,38 @@
             </div>
             <div>
                 <span>SUBJECT RESULT</span>
-                <h2 id="modalSubject">Mathematics</h2>
+                <h2 id="modalSubject"></h2>
             </div>
         </div>
         <div class="modal-score">
             <div>
                 <span>FINAL SCORE</span>
-                <strong id="modalScore">92</strong>
+                <strong id="modalScore"></strong>
                 <small>/ 100</small>
             </div>
-            <div class="modal-grade" id="modalGrade">A+</div>
+            <div class="modal-grade" id="modalGrade"></div>
         </div>
         <div class="mark-breakdown">
             <div>
                 <span>Internal</span>
-                <strong id="modalInternal">28/30</strong>
+                <strong id="modalInternal"></strong>
             </div>
             <div>
                 <span>External</span>
-                <strong id="modalExternal">64/70</strong>
+                <strong id="modalExternal"></strong>
             </div>
             <div>
                 <span>Practical</span>
-                <strong id="modalPractical">18/20</strong>
+                <strong id="modalPractical"></strong>
             </div>
             <div>
                 <span>Attendance</span>
-                <strong id="modalAttendance">91%</strong>
+                <strong id="modalAttendance"></strong>
             </div>
         </div>
         <div class="teacher-feedback">
             <span>TEACHER FEEDBACK</span>
-            <p>"Excellent performance. Keep maintainingconsistency and continue working on advancedconcepts."</p>
+            <p></p>
         </div>
         <button class="modal-close-btn" onclick="closeSubject()">Done</button>
     </div>

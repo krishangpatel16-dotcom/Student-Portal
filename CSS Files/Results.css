@@ -1,17 +1,8 @@
 ﻿:root {
     --bg-main: #0b1630;
-    --bg-sidebar: #0b1429;
-    --card: rgba(36, 57, 106, 0.55);
-    --card-light: rgba(50, 75, 135, 0.40);
     --border: rgba(133, 170, 255, 0.14);
     --text: #f5f7ff;
     --text-soft: #b9c5df;
-    --text-muted: #7f8eaf;
-    --blue: #398cff;
-    --purple: #8b5cf6;
-    --cyan: #20d9ff;
-    --green: #20e3b2;
-    --yellow: #ffc83d;
     --radius: 22px;
 }
 * {
@@ -65,18 +56,42 @@ button {
     z-index: 50;
 }
 .logo {
-    padding-left: 12px;
-    margin-bottom: 42px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 14px;
+    margin-bottom: 48px;
+}
+.logo-icon {
+    width: 43px;
+    height: 43px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+    font-size: 21px;
+}
+.logo-text {
     display: flex;
     flex-direction: column;
-    font-size: 36px;
-    font-weight: 800;
     line-height: 1.15;
-    background:linear-gradient(135deg,#63b7ff,#3f83ff,#8e7dff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    background-clip: text;
-    color: transparent;
+    font-size: 2.15rem;
+    font-weight: 800;
+}
+.logo-main {
+    display: block;
+    font-size: 18px;
+    font-weight: 800;
+}
+.logo-sub {
+    display: block;
+    margin-top: 2px;
+    color: #7185a8;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
 }
 .side-menu {
     display: flex;
@@ -112,18 +127,6 @@ button {
     color: #d5dff5;
     font-size: 17px;
 }
-.result-icon {
-    width: 1em;
-    height: 1em;
-    display: inline-block;
-    vertical-align: middle;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
-}
-.menu-icon .result-icon {
-    width: 20px;
-    height: 20px;
-}
 .menu-item.active .menu-icon {
     color: #5ba7ff;
 }
@@ -147,6 +150,14 @@ button {
 }
 .logout-icon {
     font-size: 22px;
+}
+.result-icon {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: middle;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
 }
 .main-content {
     margin-left: 270px;
@@ -176,7 +187,6 @@ button {
     background:linear-gradient(90deg,#5ab5ff,#6e8cff,#b277ff,#36e0bd);
     -webkit-background-clip: text;
     background-clip: text;
-    background-clip: text;
     color: transparent;
     background-size: 250% auto;
     animation: gradientText 5s linear infinite;
@@ -205,12 +215,29 @@ button {
     border: 1px solid rgba(129, 163, 235, .18);
     color: white;
     border-radius: 12px;
-    padding: 13px 18px;
+    padding: 13px 42px 13px 18px;
     outline: none;
     font-size: 14px;
+    background-color: #172952;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2393c5fd' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    appearance: none;
+    cursor: pointer;
+    transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+.semester-select:hover {
+    border-color: rgba(129, 163, 235, .65);
+    background-color: #1e3765;
+}
+.semester-select:focus-visible {
+    outline: none;
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, .24);
 }
 .semester-select option {
     background: #172952;
+    color: #f8fafc;
 }
 .download-btn {
     border: none;
@@ -799,7 +826,6 @@ button {
     display: grid;
     place-items: center;
     position: relative;
-    background:conic-gradient(rom -90deg,#398cff 0%,#8b5cf6 calc(var(--percentage) * .6%),#20e3b2 calc(var(--percentage) * 1%),rgba(255,255,255,.07) calc(var(--percentage) * 1%),rgba(255,255,255,.07) 100%);
     box-shadow:0 0 35px rgba(66,129,255,.12);
     animation: circleAppear 1s ease;
 }
@@ -1081,6 +1107,13 @@ button {
     .portal {
         display: block;
     }
+
+    .empty-results {
+        color: #cbd5e1;
+        padding: 2rem;
+        text-align: center;
+        width: 100%;
+    }
     .logo {
         margin-bottom: 20px;
     }
@@ -1143,9 +1176,6 @@ button {
     }
 }
 @media (max-width: 450px) {
-    .side-menu {
-        grid-template-columns: 1fr;
-    }
     .page-header h1 {
         font-size: 36px;
     }

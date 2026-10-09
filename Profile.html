@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile | Student Portal</title>
     <link rel="stylesheet" href="CSS Files/Profile.css">
+    <link rel="stylesheet" href="CSS Files/Sidebar.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -19,36 +20,40 @@
             </div>
             <nav class="side-menu">
                 <a href="HomePage.html" class="menu-item">
-                    <span class="menu-icon">⌂</span>
+                    <span class="menu-icon"><img src="Images/Icons/house.svg" alt=""></span>
                     <span>Home</span>
                 </a>
-                <a href="profile.html" class="menu-item active">
-                    <span class="menu-icon">♙</span>
+                <a href="Profile.html" class="menu-item active">
+                    <span class="menu-icon"><img src="Images/Icons/user-round.svg" alt=""></span>
                     <span>Profile</span>
                 </a>
-                <a href="courses.html" class="menu-item">
-                    <span class="menu-icon">▣</span>
+                <a href="Courses.html" class="menu-item">
+                    <span class="menu-icon"><img src="Images/Icons/book-open.svg" alt=""></span>
                     <span>Courses</span>
                 </a>
-                <a href="assignments.html" class="menu-item">
-                    <span class="menu-icon">✓</span>
+                <a href="Assignments.html" class="menu-item">
+                    <span class="menu-icon"><img src="Images/Icons/clipboard-list.svg" alt=""></span>
                     <span>Assignments</span>
                 </a>
-                <a href="result.html" class="menu-item">
-                    <span class="menu-icon">▤</span>
+                <a href="Results.html" class="menu-item">
+                    <span class="menu-icon"><img src="Images/Icons/chart-column.svg" alt=""></span>
                     <span>Results</span>
                 </a>
-                <a href="feedback.html" class="menu-item">
-                    <span class="menu-icon">♡</span>
+                <a href="Feedback.html" class="menu-item">
+                    <span class="menu-icon"><img src="Images/Icons/message-square.svg" alt=""></span>
                     <span>Feedback</span>
                 </a>
-                <a href="aboutus.html" class="menu-item">
-                    <span class="menu-icon">ⓘ</span>
+                <a href="DataView.html" class="menu-item">
+                    <span class="menu-icon"><img src="Images/Icons/chart-column.svg" alt=""></span>
+                    <span>Data View</span>
+                </a>
+                <a href="AboutUs.html" class="menu-item">
+                    <span class="menu-icon"><img src="Images/Icons/circle-help.svg" alt=""></span>
                     <span>About Us</span>
                 </a>
             </nav>
-            <a href="login.html" class="menu-item logout">
-                <span class="logout-icon">↪</span>
+            <a href="PHP Files/logout.php" class="menu-item logout">
+                <span class="logout-icon"><img src="Images/Icons/log-out.svg" alt=""></span>
                 <span>Log out</span>
             </a>
         </aside>
@@ -57,7 +62,7 @@
                 <div>
                     <span class="section-label">STUDENT PROFILE</span>
                     <h1>Student Information</h1>
-                    <p>View and manage your personal and academic information.</p>
+                    <p id="profileStatus">Loading your profile...</p>
                 </div>
                 <div class="profile-status">
                     <span class="status-dot"></span>
@@ -66,25 +71,25 @@
             </header>
             <section class="profile-hero">
                 <div class="profile-main">
-                    <div class="profile-avatar">KP</div>
+                    <div class="profile-avatar" id="profileAvatar"></div>
                     <div class="profile-intro">
                         <span class="student-label">STUDENT</span>
-                        <h2>Krishang Patel</h2>
-                        <p>Information Technology</p>
+                        <h2 data-profile-field="fullname"></h2>
+                        <p><span data-profile-field="course"></span> <span data-profile-field="year"></span></p>
                         <div class="student-id">
                             <span>Student ID</span>
-                            <strong>25DIT057</strong>
+                            <strong data-profile-field="student_id"></strong>
                         </div>
                     </div>
                 </div>
                 <div class="quick-details">
                     <div class="quick-item">
                         <span class="quick-label">DEPARTMENT</span>
-                        <strong>Information Technology</strong>
+                        <strong data-profile-field="department"></strong>
                     </div>
                     <div class="quick-item">
                         <span class="quick-label">EMAIL</span>
-                        <strong>25dit057@charusat.edu.in</strong>
+                        <strong data-profile-field="email"></strong>
                     </div>
                 </div>
             </section>
@@ -99,29 +104,29 @@
                 <div class="info-grid">
                     <div class="info-card">
                         <span class="info-label">FULL NAME</span>
-                        <strong>Krishang Patel</strong>
+                        <strong data-profile-field="fullname"></strong>
                     </div>
                     <div class="info-card">
                         <span class="info-label">STUDENT ID</span>
-                        <strong>25DIT057</strong>
+                        <strong data-profile-field="student_id"></strong>
                     </div>
                     <div class="info-card">
                         <span class="info-label">EMAIL ADDRESS</span>
-                        <strong>25dit057@charusat.edu.in</strong>
+                        <strong data-profile-field="email"></strong>
                     </div>
                     <div class="info-card">
                         <span class="info-label">PHONE NUMBER</span>
-                        <strong>8741598563</strong>
+                        <strong data-profile-field="mobile"></strong>
                     </div>
                     <div class="info-card">
                         <span class="info-label">
                             DATE OF BIRTH
                         </span>
-                        <strong>16/06/2007</strong>
+                        <strong data-profile-field="date_of_birth"></strong>
                     </div>
                     <div class="info-card">
                         <span class="info-label">GENDER</span>
-                        <strong>Male</strong>
+                        <strong data-profile-field="gender"></strong>
                     </div>
                 </div>
             </section>
@@ -138,28 +143,28 @@
                         <div class="academic-icon">🎓</div>
                         <div>
                             <span>DEPARTMENT</span>
-                            <strong>Information Technology</strong>
+                            <strong data-profile-field="department"></strong>
                         </div>
                     </div>
                     <div class="academic-card">
                         <div class="academic-icon blue">▣</div>
                         <div>
                             <span>PROGRAM</span>
-                            <strong>B.Tech</strong>
+                            <strong data-profile-field="course"></strong>
                         </div>
                     </div>
                     <div class="academic-card">
                         <div class="academic-icon purple">◷</div>
                         <div>
                             <span>SEMESTER</span>
-                            <strong>3rd</strong>
+                            <strong data-profile-field="semester"></strong>
                         </div>
                     </div>
                     <div class="academic-card">
                         <div class="academic-icon green"># </div>
                         <div>
                             <span>DIVISION</span>
-                            <strong>A</strong>
+                            <strong data-profile-field="division"></strong>
                         </div>
                     </div>
                 </div>
@@ -182,7 +187,7 @@
                         <div>
                             <span>EMAIL</span>
                             <strong>
-                                25dit057@charusat.edu.in
+                                <span data-profile-field="email"></span>
                             </strong>
                         </div>
                     </div>
@@ -190,14 +195,14 @@
                         <div class="contact-icon phone">☎</div>
                         <div>
                             <span>PHONE</span>
-                            <strong>8741598563</strong>
+                            <strong data-profile-field="mobile"></strong>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon location">⌖</div>
                         <div>
                             <span>ADDRESS</span>
-                            <strong>Nisarg Hostel, Charusat University, Changa, Gujarat</strong>
+                            <strong data-profile-field="address"></strong>
                         </div>
                     </div>
                 </div>
@@ -207,6 +212,6 @@
             </footer>
         </main>
     </div>
-    <script src="profile.js"></script>
+    <script src="JavaScript Files/Profile.js" defer></script>
 </body>
 </html>

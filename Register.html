@@ -35,49 +35,102 @@
         <h1 class="register-title" id="register-title">Create Account</h1>
         <p class="register-sub">Hey, enter your details to get started</p>
 
-    <form action="HomePage.html" method="get">
+    <form id="registerForm" action="PHP Files/process_registration.php" method="post" novalidate>
       <div class="field-group">
         <label class="field-label" for="fullname">Full Name</label>
         <div class="input-wrapper">
           <i class="fas fa-user"></i>
-          <input type="text" id="fullname" placeholder="John Doe" required />
+          <input type="text" id="fullname" name="fullname" placeholder="John Doe" />
         </div>
+        <small class="error-message" data-error-for="fullname"></small>
       </div>
 
       <div class="field-group">
         <label class="field-label" for="email">Email</label>
         <div class="input-wrapper">
           <i class="fas fa-envelope"></i>
-          <input type="email" id="email" placeholder="example@email.com" required />
+          <input type="email" id="email" name="email" placeholder="example@email.com" />
         </div>
+        <small class="error-message" data-error-for="email"></small>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="mobile">Mobile Number</label>
+        <div class="input-wrapper">
+          <i class="fas fa-phone"></i>
+          <input type="tel" id="mobile" name="mobile" placeholder="9876543210" maxlength="10" />
+        </div>
+        <small class="error-message" data-error-for="mobile"></small>
       </div>
 
       <div class="field-group">
         <label class="field-label" for="password">Password</label>
         <div class="input-wrapper password-wrapper">
           <i class="fas fa-lock"></i>
-          <input type="password" id="password" placeholder="Create a strong password" required />
-          <i class="fas fa-eye toggle-icon"></i>
+          <input type="password" id="password" name="password" placeholder="Create a strong password" />
+          <i class="fas fa-eye toggle-icon" aria-label="Show password"></i>
         </div>
+        <small class="error-message" data-error-for="password"></small>
       </div>
 
       <div class="field-group">
         <label class="field-label" for="confirm-password">Confirm Password</label>
         <div class="input-wrapper password-wrapper">
           <i class="fas fa-check-circle"></i>
-          <input type="password" id="confirm-password" placeholder="Re-enter your password" required />
-          <i class="fas fa-eye toggle-icon"></i>
+          <input type="password" id="confirm-password" name="confirmPassword" placeholder="Re-enter your password" />
+          <i class="fas fa-eye toggle-icon" aria-label="Show password"></i>
         </div>
+        <small class="error-message" data-error-for="confirmPassword"></small>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="course">Course</label>
+        <div class="select-wrapper">
+          <select id="course" name="course">
+            <option value="">Select your course</option>
+            <option value="BCA">BCA</option>
+            <option value="BSc">BSc</option>
+            <option value="BTech">BTech</option>
+            <option value="MBA">MBA</option>
+          </select>
+        </div>
+        <small class="error-message" data-error-for="course"></small>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="year">Year</label>
+        <div class="select-wrapper">
+          <select id="year" name="year">
+            <option value="">Select your year</option>
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+            <option value="4th Year">4th Year</option>
+          </select>
+        </div>
+        <small class="error-message" data-error-for="year"></small>
+      </div>
+
+      <div class="field-group gender-group">
+        <label class="field-label">Gender</label>
+        <div class="gender-options" role="radiogroup" aria-label="Gender">
+          <label class="radio-option"><input type="radio" name="gender" value="Male" /> <span>Male</span></label>
+          <label class="radio-option"><input type="radio" name="gender" value="Female" /> <span>Female</span></label>
+          <label class="radio-option"><input type="radio" name="gender" value="Other" /> <span>Other</span></label>
+        </div>
+        <small class="error-message" data-error-for="gender"></small>
       </div>
 
       <div class="terms-row">
         <label class="terms-checkbox">
-          <input type="checkbox" required /> 
+          <input type="checkbox" name="terms" /> 
           <span class="checkmark"></span>
           I agree to the <a href="#" class="terms-link">Terms &amp; Conditions</a>
         </label>
+        <small class="error-message" data-error-for="terms"></small>
       </div>
 
+      <div class="form-status" id="formStatus" aria-live="polite"></div>
       <button type="submit" class="register-btn">Create Account</button>
     </form>
 

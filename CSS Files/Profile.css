@@ -10,7 +10,7 @@ html {
 
 body {
     font-family: "Inter", sans-serif;
-    background: #081226;
+    background: radial-gradient(circle at 75% 10%, rgba(48, 99, 220, 0.25), transparent 30%), radial-gradient(circle at 80% 80%, rgba(71, 48, 180, 0.18), transparent 30%), #0b1630;
     color: #ffffff;
 }
 
@@ -124,7 +124,7 @@ a {
     width: calc(100% - 270px);
     min-height: 100vh;
     padding: 42px 45px 30px;
-    background:radial-gradient(circle at 85% 5%,rgba(37, 99, 235, 0.08),transparent 25%),#081226;
+    background: radial-gradient(circle at 75% 10%, rgba(48, 99, 220, 0.25), transparent 30%), radial-gradient(circle at 80% 80%, rgba(71, 48, 180, 0.18), transparent 30%), #0b1630;
 }
 
 .page-header {
