@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/auth_helpers.php';
 
 $errors = [];
 $message = '';
@@ -56,123 +56,55 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     }
 
     if (count($errors) === 0) {
-        $dataFile = __DIR__ . '/registrations.json';
-        $registrations = [];
+        try {
+            require_once __DIR__ . '/db.php';
+            $pdo->beginTransaction();
 
-        if (file_exists($dataFile)) {
-            $savedData = file_get_contents($dataFile);
-            if ($savedData !== false) {
-                $decoded = json_decode($savedData, true);
-                if (is_array($decoded)) {
-                    $registrations = $decoded;
-                } else {
-                    $errors[] = 'The registration file could not be read.';
-                }
+            $checkStmt = $pdo->prepare('SELECT 1 FROM user_accounts WHERE email = :email LIMIT 1');
+            $checkStmt->execute(['email' => strtolower($email)]);
+            if ($checkStmt->fetchColumn() !== false) {
+                $pdo->rollBack();
+                $errors[] = 'An account with this email address is already registered.';
             } else {
-                $errors[] = 'The registration file could not be read.';
-            }
-        }
-
-        if (count($errors) === 0) {
-            foreach ($registrations as $registration) {
-                if (strtolower((string) ($registration['email'] ?? '')) === strtolower($email)) {
-                    $errors[] = 'An account with this email address is already registered.';
-                    break;
-                }
-            }
-        }
-
-        if (count($errors) === 0) {
-            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-            $registeredAt = date('Y-m-d H:i:s');
-            $dbSaved = false;
-
-            try {
-                $checkQuery = 'SELECT 1 FROM user_accounts WHERE email = :email LIMIT 1';
-                $checkStmt = $pdo->prepare($checkQuery);
-                $checkStmt->execute([':email' => strtolower($email)]);
-
-                if ($checkStmt->fetchColumn() !== false) {
-                    $errors[] = 'An account with this email address is already registered.';
-                } else {
-                    $insertQuery = 'INSERT INTO user_accounts (full_name, email, mobile, course, year_of_study, gender, role, password_hash, remember_token_hash, created_at) VALUES (:full_name, :email, :mobile, :course, :year_of_study, :gender, :role, :password_hash, NULL, :created_at)';
-                    $insertStmt = $pdo->prepare($insertQuery);
-                    $insertStmt->execute([
-                        ':full_name' => $fullname,
-                        ':email' => strtolower($email),
-                        ':mobile' => $mobile,
-                        ':course' => $course,
-                        ':year_of_study' => $year,
-                        ':gender' => $gender,
-                        ':role' => 'student',
-                        ':password_hash' => $passwordHash,
-                        ':created_at' => $registeredAt,
-                    ]);
-                    $dbSaved = true;
-                }
-            } catch (PDOException $exception) {
-                error_log('Database registration failed: ' . $exception->getMessage());
-                $dbSaved = false;
-            }
-
-            if (count($errors) === 0) {
-                $registrations[] = [
-                    'fullname' => $fullname,
-                    'email' => $email,
+                $insert = $pdo->prepare(
+                    'INSERT INTO user_accounts
+                        (full_name, email, mobile, course, year_of_study, gender, role, password_hash)
+                     VALUES
+                        (:full_name, :email, :mobile, :course, :year_of_study, :gender, \'student\', :password_hash)'
+                );
+                $insert->execute([
+                    'full_name' => $fullname,
+                    'email' => strtolower($email),
                     'mobile' => $mobile,
                     'course' => $course,
-                    'year' => $year,
+                    'year_of_study' => $year,
                     'gender' => $gender,
-                    'role' => 'student',
-                    'student_id' => '',
-                    'date_of_birth' => '',
-                    'department' => '',
-                    'semester' => '',
-                    'division' => '',
-                    'address' => '',
-                    'results' => [
-                        'sem1' => [
-                            'cgpa' => '',
-                            'sgpa' => '',
-                            'creditsEarned' => '',
-                            'creditsTotal' => '',
-                            'academicProgress' => '',
-                            'subjects' => []
-                        ],
-                        'sem2' => [
-                            'cgpa' => '',
-                            'sgpa' => '',
-                            'creditsEarned' => '',
-                            'creditsTotal' => '',
-                            'academicProgress' => '',
-                            'subjects' => []
-                        ],
-                        'sem3' => [
-                            'cgpa' => '',
-                            'sgpa' => '',
-                            'creditsEarned' => '',
-                            'creditsTotal' => '',
-                            'academicProgress' => '',
-                            'subjects' => []
-                        ]
-                    ],
-                    'password_hash' => $passwordHash,
-                    'registered_at' => $registeredAt,
-                ];
+                    'password_hash' => password_hash($password, PASSWORD_DEFAULT),
+                ]);
 
-                $savedData = json_encode($registrations, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-                if ($savedData === false || file_put_contents($dataFile, $savedData, LOCK_EX) === false) {
-                    $errors[] = 'The registration could not be saved. Check the folder permissions.';
-                }
-            }
+                $profile = $pdo->prepare('INSERT INTO student_profiles (user_id) VALUES (:user_id)');
+                $profile->execute(['user_id' => (int) $pdo->lastInsertId()]);
+                $pdo->commit();
 
-            if (count($errors) === 0) {
-                session_start();
+                startSecureSession();
                 session_regenerate_id(true);
                 $_SESSION['student_email'] = strtolower($email);
+                $_SESSION['student_name'] = $fullname;
+                $_SESSION['role'] = 'student';
+                refreshSessionLifetime();
                 $safeName = urlencode($fullname);
                 header('Location: ../HomePage.html?name=' . $safeName);
                 exit;
+            }
+        } catch (PDOException $exception) {
+            if (isset($pdo) && $pdo->inTransaction()) {
+                $pdo->rollBack();
+            }
+            if ($exception->getCode() === '23000') {
+                $errors[] = 'An account with this email address is already registered.';
+            } else {
+                error_log('Database registration failed: ' . $exception->getMessage());
+                $errors[] = 'Registration is temporarily unavailable. Please try again later.';
             }
         }
     }

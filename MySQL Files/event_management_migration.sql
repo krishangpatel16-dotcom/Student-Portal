@@ -1,9 +1,9 @@
 USE studenthub;
 
 ALTER TABLE events
-    ADD COLUMN poster_path VARCHAR(255) NULL AFTER category,
-    ADD COLUMN event_status ENUM('Open', 'Closed') NOT NULL DEFAULT 'Open' AFTER poster_path,
-    ADD KEY idx_events_status_date (event_status, event_date);
+    ADD COLUMN IF NOT EXISTS poster_path VARCHAR(255) NULL AFTER category,
+    ADD COLUMN IF NOT EXISTS event_status ENUM('Open', 'Closed') NOT NULL DEFAULT 'Open' AFTER poster_path,
+    ADD KEY IF NOT EXISTS idx_events_status_date (event_status, event_date);
 
 CREATE TABLE IF NOT EXISTS event_audit_logs (
     audit_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,

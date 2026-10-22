@@ -154,6 +154,49 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    const createAdminForm = document.getElementById('createAdminForm');
+    createAdminForm?.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        if (!createAdminForm.reportValidity()) {
+            return;
+        }
+        if (createAdminForm.elements.password.value !== createAdminForm.elements.confirm_password.value) {
+            showMessage('The administrator passwords do not match.', true);
+            createAdminForm.elements.confirm_password.focus();
+            return;
+        }
+
+        const formData = new FormData(createAdminForm);
+        formData.set('action', 'create_admin');
+        const submitButton = createAdminForm.querySelector('button[type="submit"]');
+        if (submitButton) {
+            submitButton.disabled = true;
+        }
+
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: { Accept: 'application/json', 'X-CSRF-Token': csrfToken },
+                body: formData
+            });
+            const result = await response.json();
+            if (!response.ok) {
+                throw new Error(result.error || 'Administrator account could not be created.');
+            }
+
+            createAdminForm.reset();
+            showMessage(result.message, false);
+            await loadDashboard();
+        } catch (error) {
+            showMessage(error.message || 'Administrator account could not be created.', true);
+        } finally {
+            if (submitButton) {
+                submitButton.disabled = false;
+            }
+        }
+    });
+
     document.getElementById('logoutBtn')?.addEventListener('click', function () {
         window.location.href = 'PHP Files/logout.php';
     });

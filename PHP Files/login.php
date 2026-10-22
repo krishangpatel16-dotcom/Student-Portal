@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/auth_helpers.php';
-require_once __DIR__ . '/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     sendJsonResponse(['error' => 'Submit your email and password to sign in.'], 405);
@@ -22,13 +21,17 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL) || $password === '') {
 }
 
 $student = null;
+$databaseStudentFound = false;
 
 try {
+    require_once __DIR__ . '/db.php';
+
     $statement = $pdo->prepare('SELECT user_id, full_name, email, mobile, course, year_of_study, gender, role, is_active, password_hash FROM user_accounts WHERE email = :email LIMIT 1');
     $statement->execute([':email' => strtolower($email)]);
     $dbStudent = $statement->fetch();
 
     if (is_array($dbStudent)) {
+        $databaseStudentFound = true;
         $student = [
             'fullname' => $dbStudent['full_name'] ?? '',
             'email' => $dbStudent['email'] ?? '',
@@ -44,19 +47,7 @@ try {
     }
 } catch (PDOException $error) {
     error_log($error->getMessage());
-    $student = null;
-}
-
-if ($student === null) {
-    try {
-        $student = findStudentByEmail(loadStudentRegistrations(), $email);
-        if (is_array($student) && !isset($student['role'])) {
-            $student['role'] = 'student';
-        }
-    } catch (RuntimeException $error) {
-        error_log($error->getMessage());
-        sendJsonResponse(['error' => 'Sign-in is temporarily unavailable. Please try again later.'], 500);
-    }
+    sendJsonResponse(['error' => 'Sign-in is temporarily unavailable. Please try again later.'], 500);
 }
 
 if ($student === null || (int) ($student['is_active'] ?? 1) !== 1 || !password_verify($password, (string) ($student['password_hash'] ?? ''))) {
@@ -75,7 +66,7 @@ $_SESSION['role'] = $role;
 $_SESSION['last_activity'] = time();
 $_SESSION['expires_at'] = time() + 900;
 
-if ($remember) {
+if ($remember && $databaseStudentFound) {
     $token = generateRememberToken();
     $_SESSION['remember_token'] = $token;
     setRememberMeCookie($token, 30);
@@ -92,8 +83,9 @@ if ($remember) {
 }
 
 $redirect = $role === 'admin' ? 'AdminDashboard.php' : 'HomePage.html';
+$student['role'] = $role;
 
 sendJsonResponse([
-    'student' => studentResponseData($student + ['role' => $role]),
+    'student' => studentResponseData($student),
     'redirect' => $redirect
 ]);

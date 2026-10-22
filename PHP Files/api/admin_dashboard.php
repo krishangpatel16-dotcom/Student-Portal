@@ -88,6 +88,91 @@ if (!is_string($token) || !isset($_SESSION['admin_dashboard_csrf']) || !hash_equ
 }
 
 $action = (string) ($_POST['action'] ?? '');
+$actorEmail = (string) $_SESSION['student_email'];
+
+if ($action === 'create_admin') {
+    $fullName = trim((string) ($_POST['full_name'] ?? ''));
+    $email = strtolower(trim((string) ($_POST['email'] ?? '')));
+    $password = (string) ($_POST['password'] ?? '');
+    $confirmPassword = (string) ($_POST['confirm_password'] ?? '');
+
+    if ($fullName === '' || strlen($fullName) > 120 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        dashboardApiResponse(['error' => 'Enter a valid administrator name and email address.'], 422);
+    }
+    if (!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,64}$/', $password)) {
+        dashboardApiResponse(['error' => 'Password must be 8–64 characters with uppercase, lowercase, a number, and a supported symbol.'], 422);
+    }
+    if (!hash_equals($password, $confirmPassword)) {
+        dashboardApiResponse(['error' => 'The administrator passwords do not match.'], 422);
+    }
+
+    try {
+        $pdo->beginTransaction();
+        $duplicateCheck = $pdo->prepare('SELECT user_id FROM user_accounts WHERE email = :email LIMIT 1');
+        $duplicateCheck->execute(['email' => $email]);
+        if ($duplicateCheck->fetchColumn() !== false) {
+            $pdo->rollBack();
+            dashboardApiResponse(['error' => 'An account with this email already exists.'], 409);
+        }
+
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        $insert = $pdo->prepare(
+            "INSERT INTO user_accounts
+                (full_name, email, mobile, course, year_of_study, gender, role, is_active, password_hash)
+             VALUES
+                (:full_name, :email, NULL, NULL, NULL, NULL, 'admin', 1, :password_hash)"
+        );
+        $insert->execute([
+            'full_name' => $fullName,
+            'email' => $email,
+            'password_hash' => $passwordHash,
+        ]);
+        $adminId = (int) $pdo->lastInsertId();
+
+        $audit = $pdo->prepare(
+            'INSERT INTO audit_logs (actor_email, action_type, entity_type, entity_id, details)
+             VALUES (:actor, :action_type, :entity, :entity_id, :details)'
+        );
+        $audit->execute([
+            'actor' => $actorEmail,
+            'action_type' => 'ADMIN_CREATED',
+            'entity' => 'user_account',
+            'entity_id' => $adminId,
+            'details' => json_encode([
+                'full_name' => $fullName,
+                'email' => $email,
+                'role' => 'admin',
+            ], JSON_THROW_ON_ERROR),
+        ]);
+        $pdo->commit();
+
+        dashboardApiResponse([
+            'message' => 'Administrator account created successfully. They can sign in from the portal login page.',
+            'admin' => [
+                'userId' => $adminId,
+                'fullName' => $fullName,
+                'email' => $email,
+                'role' => 'admin',
+            ],
+        ], 201);
+    } catch (PDOException $exception) {
+        if ($pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
+        if ($exception->getCode() === '23000') {
+            dashboardApiResponse(['error' => 'An account with this email already exists.'], 409);
+        }
+        error_log('Administrator account creation failed: ' . $exception->getMessage());
+        dashboardApiResponse(['error' => 'The administrator account could not be created. Check the database and try again.'], 500);
+    } catch (JsonException $exception) {
+        if ($pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
+        error_log('Administrator audit details could not be encoded: ' . $exception->getMessage());
+        dashboardApiResponse(['error' => 'The administrator audit entry could not be saved.'], 500);
+    }
+}
+
 if ($action !== 'set_account_status') {
     dashboardApiResponse(['error' => 'Choose a supported dashboard action.'], 422);
 }
@@ -119,7 +204,7 @@ try {
          VALUES (:actor, :action_type, :entity, :entity_id, :details)'
     );
     $audit->execute([
-        'actor' => (string) $_SESSION['student_email'],
+        'actor' => $actorEmail,
         'action_type' => $isActive === 1 ? 'USER_ACTIVATED' : 'USER_DEACTIVATED',
         'entity' => 'user_account',
         'entity_id' => (int) $userId,

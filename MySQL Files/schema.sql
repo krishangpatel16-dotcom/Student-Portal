@@ -33,10 +33,10 @@ CREATE TABLE IF NOT EXISTS user_accounts (
     user_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     full_name VARCHAR(120) NOT NULL,
     email VARCHAR(254) NOT NULL,
-    mobile VARCHAR(15) NOT NULL,
-    course VARCHAR(50) NOT NULL,
-    year_of_study VARCHAR(20) NOT NULL,
-    gender VARCHAR(20) NOT NULL,
+    mobile VARCHAR(15) NULL DEFAULT NULL,
+    course VARCHAR(50) NULL DEFAULT NULL,
+    year_of_study VARCHAR(20) NULL DEFAULT NULL,
+    gender VARCHAR(20) NULL DEFAULT NULL,
     role ENUM('student', 'admin') NOT NULL DEFAULT 'student',
     is_active TINYINT(1) NOT NULL DEFAULT 1,
     password_hash VARCHAR(255) NOT NULL,
@@ -44,6 +44,57 @@ CREATE TABLE IF NOT EXISTS user_accounts (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (user_id),
     UNIQUE KEY uq_user_accounts_email (email)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS student_profiles (
+    user_id INT UNSIGNED NOT NULL,
+    student_number VARCHAR(30) NULL,
+    date_of_birth DATE NULL,
+    department VARCHAR(100) NULL,
+    current_semester VARCHAR(30) NULL,
+    division VARCHAR(30) NULL,
+    address TEXT NULL,
+    PRIMARY KEY (user_id),
+    UNIQUE KEY uq_student_profiles_number (student_number),
+    CONSTRAINT fk_student_profiles_user
+        FOREIGN KEY (user_id) REFERENCES user_accounts (user_id)
+        ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS student_semester_results (
+    result_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_id INT UNSIGNED NOT NULL,
+    semester TINYINT UNSIGNED NOT NULL,
+    cgpa DECIMAL(4, 2) NULL,
+    sgpa DECIMAL(4, 2) NULL,
+    credits_earned DECIMAL(6, 2) NULL,
+    credits_total DECIMAL(6, 2) NULL,
+    academic_progress VARCHAR(120) NULL,
+    PRIMARY KEY (result_id),
+    UNIQUE KEY uq_student_semester (user_id, semester),
+    CONSTRAINT chk_student_result_semester CHECK (semester BETWEEN 1 AND 8),
+    CONSTRAINT fk_student_results_user
+        FOREIGN KEY (user_id) REFERENCES user_accounts (user_id)
+        ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS student_subject_results (
+    subject_result_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    result_id BIGINT UNSIGNED NOT NULL,
+    subject_name VARCHAR(160) NOT NULL,
+    credits DECIMAL(5, 2) NULL,
+    score DECIMAL(5, 2) NULL,
+    grade VARCHAR(10) NULL,
+    internal_score DECIMAL(5, 2) NULL,
+    external_score DECIMAL(5, 2) NULL,
+    practical_score DECIMAL(5, 2) NULL,
+    attendance VARCHAR(30) NULL,
+    feedback TEXT NULL,
+    PRIMARY KEY (subject_result_id),
+    UNIQUE KEY uq_result_subject (result_id, subject_name),
+    CONSTRAINT fk_subject_results_semester
+        FOREIGN KEY (result_id) REFERENCES student_semester_results (result_id)
+        ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS events (
@@ -83,6 +134,22 @@ CREATE TABLE IF NOT EXISTS audit_logs (
     PRIMARY KEY (audit_id),
     KEY idx_audit_created_at (created_at),
     KEY idx_audit_entity (entity_type, entity_id)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS feedback_submissions (
+    feedback_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_id INT UNSIGNED NULL,
+    name VARCHAR(120) NOT NULL,
+    email VARCHAR(254) NOT NULL,
+    subject VARCHAR(160) NOT NULL,
+    message TEXT NOT NULL,
+    submitted_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (feedback_id),
+    KEY idx_feedback_submitted_at (submitted_at),
+    KEY idx_feedback_user (user_id),
+    CONSTRAINT fk_feedback_user
+        FOREIGN KEY (user_id) REFERENCES user_accounts (user_id)
+        ON UPDATE CASCADE ON DELETE SET NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS registrations (

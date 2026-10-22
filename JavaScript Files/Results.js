@@ -186,7 +186,8 @@ fetch("PHP Files/current_user.php", { credentials: "same-origin" })
         }
 
         studentResults = result.student.results || {};
-        const populatedSemesters = ["sem1", "sem2", "sem3"].filter((key) => hasResultData(studentResults[key]));
+        const populatedSemesters = Array.from({ length: 8 }, (_, index) => `sem${index + 1}`)
+            .filter((key) => hasResultData(studentResults[key]));
         if (populatedSemesters.length) {
             semesterSelect.value = populatedSemesters[populatedSemesters.length - 1];
         }

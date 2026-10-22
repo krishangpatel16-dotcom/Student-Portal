@@ -24,19 +24,9 @@ try {
     $statement = $pdo->query('SELECT full_name AS fullname, email, mobile, course, year_of_study AS year, gender, created_at AS registered_at FROM user_accounts ORDER BY created_at DESC');
     $registrations = $statement->fetchAll();
 } catch (PDOException $exception) {
-    error_log($exception->getMessage());
+    error_log('Registration list query failed: ' . $exception->getMessage());
     $registrations = [];
-
-    $dataFile = __DIR__ . '/registrations.json';
-    if (file_exists($dataFile)) {
-        $savedData = file_get_contents($dataFile);
-        $decoded = json_decode($savedData ?: '[]', true);
-        if (is_array($decoded)) {
-            $registrations = $decoded;
-        } else {
-            $error = 'The registration file could not be read.';
-        }
-    }
+    $error = 'The registrations database could not be read. Check the database connection.';
 }
 
 function escapeText($value)
@@ -67,7 +57,7 @@ function escapeText($value)
             <div class="intro-copy">
                 <p class="eyebrow">Student Portal</p>
                 <h1>Saved Registrations</h1>
-                <p class="intro-text">Registration records stored in the secured student database or backed up in JSON.</p>
+                <p class="intro-text">Registration records stored in the student database.</p>
             </div>
             <div class="intro-footer"><span class="footer-line"></span><span>Learn. Grow. Achieve.</span></div>
         </section>

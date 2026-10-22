@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fileMap = {
         events: 'JSON Files/events.json',
-        students: 'JSON Files/students.json'
+        students: 'PHP Files/api/student_records.php'
     };
 
     const formatText = (value) => value ? String(value).trim() : '';
@@ -34,7 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!response.ok) {
             throw new Error(`Unable to load ${url}`);
         }
-        return response.json();
+        const result = await response.json();
+        return Array.isArray(result) ? result : (result.data || []);
     };
 
     const getDisplayValue = (item) => {
@@ -123,12 +124,14 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             updateStatus('Loading data...');
             const items = await fetchJson(fileMap[state.type]);
-            state.data = Array.isArray(items) ? items : (items.data || []);
+            state.data = items.map((item) => state.type === 'students'
+                ? { ...item, name: item.full_name, year: item.year_of_study }
+                : item);
             state.page = 1;
             renderCards();
             updateStatus(`${state.data.length} records loaded.`);
         } catch (error) {
-            dataGrid.innerHTML = '<div class="empty-state error-box">Unable to load data. Please check the JSON file.</div>';
+            dataGrid.innerHTML = '<div class="empty-state error-box">Unable to load data. Check your sign-in and database connection.</div>';
             pagination.innerHTML = '';
             updateStatus(error.message, true);
         }

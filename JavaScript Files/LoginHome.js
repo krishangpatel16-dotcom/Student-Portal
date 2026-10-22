@@ -98,8 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 showStatus('Sign in successful! Redirecting to your portal.', true);
                 setTimeout(() => {
-                    const targetPage = result.redirect || (role === 'admin' ? 'AdminDashboard.php' : 'HomePage.html');
-                    window.location.href = targetPage + '?name=' + encodeURIComponent(username);
+                    const targetPage = role === 'admin' ? 'AdminDashboard.php' : 'HomePage.html';
+                    window.location.href = targetPage;
                 }, 500);
             })
             .catch((error) => {

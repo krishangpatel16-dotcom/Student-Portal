@@ -98,42 +98,6 @@ function destroySession(): void
     session_destroy();
 }
 
-function loadStudentRegistrations(): array
-{
-    $dataFile = __DIR__ . '/registrations.json';
-    if (!is_file($dataFile) || !is_readable($dataFile)) {
-        throw new RuntimeException('The registration data file is unavailable.');
-    }
-
-    $contents = file_get_contents($dataFile);
-    if ($contents === false) {
-        throw new RuntimeException('The registration data file could not be read.');
-    }
-
-    try {
-        $registrations = json_decode($contents, true, 512, JSON_THROW_ON_ERROR);
-    } catch (JsonException $error) {
-        throw new RuntimeException('The registration data file contains invalid JSON.', 0, $error);
-    }
-
-    if (!is_array($registrations)) {
-        throw new RuntimeException('The registration data file has an invalid format.');
-    }
-
-    return $registrations;
-}
-
-function findStudentByEmail(array $registrations, string $email): ?array
-{
-    foreach ($registrations as $registration) {
-        if (is_array($registration) && strtolower((string) ($registration['email'] ?? '')) === strtolower($email)) {
-            return $registration;
-        }
-    }
-
-    return null;
-}
-
 function studentResponseData(array $student): array
 {
     $studentData = [];
@@ -165,7 +129,7 @@ function studentResponseData(array $student): array
     ];
     $savedResults = is_array($student['results'] ?? null) ? $student['results'] : [];
     $studentData['results'] = [];
-    foreach (['sem1', 'sem2', 'sem3'] as $semester) {
+    foreach (['sem1', 'sem2', 'sem3', 'sem4', 'sem5', 'sem6', 'sem7', 'sem8'] as $semester) {
         $studentData['results'][$semester] = array_merge(
             $emptySemesterResults,
             is_array($savedResults[$semester] ?? null) ? $savedResults[$semester] : []
