@@ -33,6 +33,10 @@
 					<span class="menu-icon"><img src="Images/Icons/clipboard-list.svg" alt=""></span>
 					<span>Assignments</span>
 				</a>
+				<a href="Events.html" class="menu-item">
+					<span class="menu-icon"><img src="Images/Icons/sparkles.svg" alt=""></span>
+					<span>Events</span>
+				</a>
 				<a href="Results.html" class="menu-item">
 					<span class="menu-icon"><img src="Images/Icons/chart-column.svg" alt=""></span>
 					<span>Results</span>
@@ -73,7 +77,7 @@
 				<div>
 					<span class="hero-kicker">Keep learning</span>
 					<h1>Build your next<br>great skill.</h1>
-					<p>Find your course materials, class schedule and learning progress in one focused space.</p>
+					<p>Explore subject outlines, key concepts, assignments and learning progress in one focused space.</p>
 					<a href="#enrolled-courses" class="hero-button">View enrolled courses <span>→</span></a>
 				</div>
 				<div class="hero-orbit" aria-hidden="true">
@@ -99,32 +103,51 @@
 						<h3>Discrete Mathematics</h3>
 						<p>Learn the mathematical foundations for computer science and engineering.</p>
 						<div class="course-meta"><span>◷</span> Monday &amp; Wednesday</div>
-						<a href="Timetable.html">View course <span>→</span></a>
+						<button class="course-detail-button" type="button" data-course="discrete">View course <span>→</span></button>
 					</article>
 					<article class="course-card course-gold">
 						<div class="course-card-top"><span class="course-code">ITUE203</span><span class="course-mark">02</span></div>
 						<h3>Web Development</h3>
 						<p>Learn to build modern, responsive websites and web applications.</p>
 						<div class="course-meta"><span>◷</span> Tuesday &amp; Thursday</div>
-						<a href="Timetable.html">View course <span>→</span></a>
+						<button class="course-detail-button" type="button" data-course="web">View course <span>→</span></button>
 					</article>
 					<article class="course-card course-cyan">
 						<div class="course-card-top"><span class="course-code">CSUC201</span><span class="course-mark">03</span></div>
 						<h3>Fundamentals of Data Science</h3>
 						<p>Explore the principles and techniques of data analysis and machine learning.</p>
 						<div class="course-meta"><span>◷</span> Monday &amp; Saturday</div>
-						<a href="Timetable.html">View course <span>→</span></a>
+						<button class="course-detail-button" type="button" data-course="data-science">View course <span>→</span></button>
 					</article>
 					<article class="course-card course-mint">
 						<div class="course-card-top"><span class="course-code">ITUC201</span><span class="course-mark">04</span></div>
 						<h3>Fundamentals of Computer Networks</h3>
 						<p>Understand the principles and practices of computer networking.</p>
 						<div class="course-meta"><span>◷</span> Wednesday &amp; Friday</div>
-						<a href="Timetable.html">View course <span>→</span></a>
+						<button class="course-detail-button" type="button" data-course="networks">View course <span>→</span></button>
 					</article>
 				</div>
 			</section>
 		</main>
 	</div>
+	<div class="course-modal-overlay" id="courseModal" aria-hidden="true">
+		<section class="course-detail-modal" role="dialog" aria-modal="true" aria-labelledby="courseModalTitle" tabindex="-1">
+			<button class="course-modal-close" type="button" aria-label="Close course details">×</button>
+			<div class="course-modal-top">
+				<div class="course-modal-icon" aria-hidden="true">▣</div>
+				<div><span id="courseModalCode"></span><h2 id="courseModalTitle"></h2></div>
+			</div>
+			<div class="course-overview">
+				<span>COURSE OVERVIEW</span>
+				<p id="courseModalDescription"></p>
+			</div>
+			<div class="course-topics">
+				<span>WHAT YOU WILL STUDY</span>
+				<ul id="courseModalTopics"></ul>
+			</div>
+			<button class="course-modal-done" type="button">Done</button>
+		</section>
+	</div>
+	<script src="JavaScript Files/Courses.js" defer></script>
 </body>
 </html>

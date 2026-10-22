@@ -15,6 +15,7 @@
                 <a href="Profile.html" class="menu-item"><span class="menu-icon"><img src="Images/Icons/user-round.svg" alt=""></span><span>Profile</span></a>
                 <a href="Courses.html" class="menu-item"><span class="menu-icon"><img src="Images/Icons/book-open.svg" alt=""></span><span>Courses</span></a>
                 <a href="Assignments.html" class="menu-item"><span class="menu-icon"><img src="Images/Icons/clipboard-list.svg" alt=""></span><span>Assignments</span></a>
+                <a href="Events.html" class="menu-item"><span class="menu-icon"><img src="Images/Icons/sparkles.svg" alt=""></span><span>Events</span></a>
                 <a href="Results.html" class="menu-item"><span class="menu-icon"><img src="Images/Icons/chart-column.svg" alt=""></span><span>Results</span></a>
                 <a href="Feedback.html" class="menu-item active" aria-current="page"><span class="menu-icon"><img src="Images/Icons/message-square.svg" alt=""></span><span>Feedback</span></a>
                 <a href="DataView.html" class="menu-item"><span class="menu-icon"><img src="Images/Icons/chart-column.svg" alt=""></span><span>Data View</span></a>
@@ -26,34 +27,35 @@
             <div class="form-container">
                 <h1>Feedback Form</h1>
         
-        <form>
+                <form id="feedbackForm">
             <div class="input-group">
                 <label for="name">Name:</label>
-                <input type="text" id="name" placeholder="Enter Name">
+                        <input type="text" id="name" name="name" placeholder="Your account name" readonly required>
             </div>
 
             <div class="input-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" placeholder="Enter email">
+                        <input type="email" id="email" name="email" placeholder="Your account email" readonly required>
             </div>
 
             <div class="input-group">
                 <label for="subject">Subject:</label>
-                <input type="text" id="subject" placeholder="Enter subject">
+                        <input type="text" id="subject" name="subject" maxlength="160" placeholder="Enter subject" required>
             </div>
 
             <div class="input-group">
                 <label for="message">Message:</label>
-                <textarea id="message" rows="5" placeholder="Enter message"></textarea>
+                        <textarea id="message" name="message" rows="5" maxlength="5000" placeholder="Enter message" required></textarea>
             </div>
 
-            <button type="submit" class="submit-btn">
+                    <p id="feedbackStatus" role="status" aria-live="polite"></p>
+                    <button id="feedbackSubmit" type="submit" class="submit-btn" disabled>
                 Submit <span>&rarr;</span>
             </button>
         </form>
             </div>
         </main>
     </div>
-
+    <script src="JavaScript Files/Feedback.js" defer></script>
 </body>
 </html>

@@ -11,7 +11,7 @@
 <body>
   <main class="register-page">
     <section class="register-intro" aria-label="Student Portal introduction">
-      <a class="brand" href="HomePage.html" aria-label="Student Portal home">
+      <a class="brand" href="LoginHome.html" aria-label="Back to Student Portal sign in">
         <span class="brand-mark">SP</span>
         <span>Student Portal</span>
       </a>
@@ -19,7 +19,7 @@
       <div class="intro-copy">
         <p class="eyebrow">Start your journey</p>
         <h1>Build your academic space.</h1>
-        <p class="intro-text">Create your account to bring courses, assignments, attendance and results together in one focused place.</p>
+        <p class="intro-text">Create your student account to bring courses, assignments, attendance and results together in one focused place.</p>
       </div>
 
       <div class="intro-footer">
@@ -32,10 +32,10 @@
       <div class="register-card">
         <div class="mobile-brand">Student Portal</div>
         <p class="eyebrow">Get started</p>
-        <h1 class="register-title" id="register-title">Create Account</h1>
-        <p class="register-sub">Hey, enter your details to get started</p>
+        <h1 class="register-title" id="register-title">Create Student Account</h1>
+        <p class="register-sub">Enter your student details to get started. Administrator accounts are created from the admin dashboard.</p>
 
-    <form id="registerForm" action="PHP Files/process_registration.php" method="post" novalidate>
+    <form id="registerForm" action="PHP Files/process_registration.php" method="post" data-registration-role="student" novalidate>
       <div class="field-group">
         <label class="field-label" for="fullname">Full Name</label>
         <div class="input-wrapper">

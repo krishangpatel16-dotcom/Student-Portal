@@ -9,7 +9,7 @@
 <body>
     <main class="login-page">
         <section class="login-intro" aria-label="Student Portal introduction">
-            <a class="brand" href="HomePage.html" aria-label="Student Portal home">
+            <a class="brand" href="LoginHome.html" aria-label="Student Portal sign in">
                 <span class="brand-mark">SP</span>
                 <span>Student Portal</span>
             </a>
@@ -31,11 +31,11 @@
                 <div class="mobile-brand">Student Portal</div>
                 <p class="eyebrow">Welcome back</p>
                 <h2 id="login-title">Sign in to your account</h2>
-                <p class="login-subtitle">Use your student email and password to continue.</p>
+                <p class="login-subtitle">Students and administrators use the same sign-in. Your account role opens the correct portal automatically.</p>
 
                 <form id="loginForm" action="HomePage.html" method="get" novalidate>
                     <div class="field-group">
-                        <label for="email">Student email</label>
+                        <label for="email">Portal email</label>
                         <input type="email" id="email" name="email" placeholder="you@university.edu" autocomplete="email" required>
                         <small class="error-message" data-error-for="email"></small>
                     </div>
@@ -58,7 +58,8 @@
                     <div class="form-status" id="formStatus" aria-live="polite"></div>
                 </form>
 
-                <p class="signup-prompt">New to the portal? <a href="Register.html" class="text-link">Create an account</a></p>
+                <p class="signup-prompt">Student? <a href="Register.html" class="text-link">Create a student account</a></p>
+                <p class="signup-prompt">Administrator accounts are created by an existing administrator.</p>
             </div>
         </section>
     </main>

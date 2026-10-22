@@ -46,9 +46,12 @@ if ($csrfToken === '') {
                 <a href="AdminDashboard.php" class="nav-item active" aria-current="page">Overview</a>
                 <a href="PHP Files/student_management.php" class="nav-item">Student Management</a>
                 <a href="PHP Files/event_management.php" class="nav-item">Event Management</a>
+                <a href="#create-admin-account" class="nav-item">Create administrator</a>
                 <a href="PHP Files/view_registrations.php" class="nav-item">Registrations</a>
                 <a href="PHP Files/studenthub.php" class="nav-item">StudentHub Data</a>
                 <a href="HomePage.html" class="nav-item">Student Home</a>
+                <a href="Register.html" class="nav-item">Register student</a>
+                <a href="LoginHome.html" class="nav-item">Portal sign in</a>
             </nav>
         </aside>
 
@@ -102,6 +105,32 @@ if ($csrfToken === '') {
                         <tbody id="studentAccounts"><tr><td colspan="4">Loading student accounts…</td></tr></tbody>
                     </table>
                 </div>
+            </section>
+
+            <section class="dashboard-panel admin-create-panel" id="create-admin-account">
+                <div class="dashboard-panel-heading">
+                    <div><h2>Create administrator account</h2><p>Administrator accounts can only be created by a signed-in administrator. Student profile fields are not required.</p></div>
+                </div>
+                <form class="admin-create-form" id="createAdminForm" novalidate>
+                    <label class="admin-create-field">
+                        <span>Administrator full name</span>
+                        <input type="text" name="full_name" maxlength="120" autocomplete="name" required>
+                    </label>
+                    <label class="admin-create-field">
+                        <span>Administrator email</span>
+                        <input type="email" name="email" maxlength="254" autocomplete="email" required>
+                    </label>
+                    <label class="admin-create-field">
+                        <span>Password</span>
+                        <input type="password" name="password" minlength="8" maxlength="64" pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,64}" autocomplete="new-password" required>
+                        <small>Use 8–64 characters with uppercase, lowercase, a number, and one of @$!%*?&amp;.</small>
+                    </label>
+                    <label class="admin-create-field">
+                        <span>Confirm password</span>
+                        <input type="password" name="confirm_password" minlength="8" maxlength="64" autocomplete="new-password" required>
+                    </label>
+                    <button class="account-toggle admin-create-submit" type="submit">Create administrator</button>
+                </form>
             </section>
         </main>
     </div>
