@@ -29,7 +29,7 @@ if ($email === '' && isset($_COOKIE['student_remember']) && $_COOKIE['student_re
                 ? strtolower((string) ($user['role'] ?? 'student'))
                 : 'student';
             $_SESSION['last_activity'] = time();
-            $_SESSION['expires_at'] = time() + 900;
+            $_SESSION['expires_at'] = time() + SESSION_TIMEOUT_SECONDS;
             $email = (string) $_SESSION['student_email'];
         }
     } catch (PDOException $exception) {

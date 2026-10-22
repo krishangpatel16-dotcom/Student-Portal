@@ -10,7 +10,7 @@ ON DUPLICATE KEY UPDATE
     course_name = VALUES(course_name);
 
 INSERT INTO user_accounts (user_id, full_name, email, mobile, course, year_of_study, gender, role, is_active, password_hash, remember_token_hash) VALUES
-(1, 'Portal Administrator', 'admin@studentportal.local', '9876543210', 'BCA', 'Admin', 'Other', 'admin', 1, '$2y$10$v9jEhGdKq2D2DGWCNGhNlOxOuoivv3lalKgnVRwKxFqyEz3DT96VO', NULL),
+(1, 'Portal Administrator', 'admin@studentportal.local', '9876543210', 'BCA', 'Admin', 'Other', 'admin', 1, '$2y$10$UwtyDePguSjO0xsSfUdFEOem6S6YqgEaTcyolUh/YtfikE4bAYToS', NULL),
 (2, 'Demo Student', 'student@studentportal.local', '9123456789', 'BCA', '2nd Year', 'Male', 'student', 1, '$2y$10$Bfw/mGPpQTz3WKNJs1Kud.p1AGEzzRmvq5ULWJ39czITqi/uNqIFe', NULL)
 ON DUPLICATE KEY UPDATE
     full_name = VALUES(full_name),

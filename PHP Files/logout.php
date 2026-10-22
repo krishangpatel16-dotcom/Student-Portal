@@ -18,5 +18,6 @@ if ($email !== '') {
 }
 
 destroySession();
-header('Location: ../LoginHome.html');
+$expired = ($_GET['reason'] ?? '') === 'timeout';
+header('Location: ../LoginHome.html' . ($expired ? '?expired=1' : ''));
 exit;

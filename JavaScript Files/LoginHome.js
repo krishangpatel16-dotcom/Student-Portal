@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
         statusBox.className = `form-status${isSuccess ? ' success' : ''}`;
     };
 
+    if (new URLSearchParams(window.location.search).has('expired')) {
+        showStatus('Your session expired after 10 minutes of inactivity. Please sign in again.');
+    }
+
     const getErrorElement = (fieldName) => document.querySelector(`[data-error-for="${fieldName}"]`);
 
     const clearError = (fieldName) => {

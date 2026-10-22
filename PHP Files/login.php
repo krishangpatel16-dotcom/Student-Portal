@@ -64,7 +64,7 @@ $_SESSION['student_email'] = strtolower($email);
 $_SESSION['student_name'] = (string) ($student['fullname'] ?? 'Student');
 $_SESSION['role'] = $role;
 $_SESSION['last_activity'] = time();
-$_SESSION['expires_at'] = time() + 900;
+$_SESSION['expires_at'] = time() + SESSION_TIMEOUT_SECONDS;
 
 if ($remember && $databaseStudentFound) {
     $token = generateRememberToken();
